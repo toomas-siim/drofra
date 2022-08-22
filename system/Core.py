@@ -14,3 +14,4 @@ class Core:
         run = True
         while run is True:
             time.sleep(0.01) # Sleep for a bit
+            Command.handle(self)

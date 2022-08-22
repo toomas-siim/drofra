@@ -15,10 +15,11 @@ class Communication:
 
     def read(self):
         self.currentLine += spi.read(2).decode("utf-8")
-        result = self.currentLine
         if self.endLine in self.currentLine:
+            result = self.currentLine
             self.currentLine = ""
-        return result
+            return result.replace(self.startLine, '').replace(self.endLine, '')
+        return ''
 
     def close():
         spi.close()
