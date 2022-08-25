@@ -11,7 +11,7 @@ This supports different types of drones as well, like quadcopters, planes and he
 For those advanced UAV drones that want to focus on a single point while flying.
 ### AI Image Analysis
 For various purposes: <br>
-* Long distance height calculations<br>
+* High altitude distance sensing<br>
 * Target acquisition<br>
 * Null Signal Navigation<br>
 ### Null Signal Navigation (NSN)
