@@ -11,6 +11,7 @@ class Communication:
         spi.open("/dev/spidev2.0", mode=1)
 
     def write(self, message):
+        message = self.startLine + message + self.endLine
         spi.write(array.array('B', message))
 
     def read(self):
