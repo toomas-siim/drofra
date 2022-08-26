@@ -3,6 +3,7 @@ import configparser
 
 class Core:
     flightStatus = False
+    droneType = "quadcopter"
 
     pinSystem = null
     cameraSystem = null
@@ -16,12 +17,15 @@ class Core:
         self.communication = new Communication()
         self.motorSystem = new Motor()
         self.servoSystem = new Servo()
+        self.loadConfig()
+        Navigation.init(self)
 
     def loadConfig(self):
         config = configparser.ConfigParser()
         config.sections()
         config.read('../drone.ini')
-        self.motorSystem.loadConfig(config['motors'])
+        self.droneType = config.general.type.lower()
+        self.motorSystem.loadConfig(config.motors)
 
     def run(self):
         run = True
