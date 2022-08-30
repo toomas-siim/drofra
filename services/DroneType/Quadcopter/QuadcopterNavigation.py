@@ -23,6 +23,10 @@ class QuadcopterNavigation:
             parent.motorSystem.setFrontMotors(Motor.SPEED_LOW)
             parent.motorSystem.setBackMotors(Motor.SPEED_LOW)
 
+    # Motor speeds by expected and current rotations
+    def getMotorSpeedByRotation(self, type, parent):
+
+
     # Rotation regulation has 5 degree allowed error margin.
     def rotationRegulation(self, parent):
         # @TODO: Should use a spectrum of motor power instead of fixed values.
