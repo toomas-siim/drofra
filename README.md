@@ -1,10 +1,12 @@
 # Drone framework - Drofra
 ## General
-Coded in python, the drofra drone isn't as much of a drone, more of a framework for drones.<br>
+Coded in python, the drofra isn't as much of a drone, more of a framework for drones.<br>
 You have a drone.ini file in the root folder, where you can configure it according to the technical specs you have set.<br>
 
 Supports a number of sensors and systems like GPS, Motors, Servos, Gyro, Compass, Camera, Radio Comms etc...<br>
 This supports different types of drones as well, like quadcopters, planes and helicopters.
+
+Designed for Raspberry pi / Banana pi use.<br>
 
 ## Drone configuration
 In the root directory there is a file called ```drone.ini```<br>
