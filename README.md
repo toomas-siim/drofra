@@ -83,4 +83,4 @@ So a camoflauge is needed, this consists of an LED cover under the drone which e
 The RGB values are set by a top directed photon sensor. This will effectively mimic the color of the sky (be it clouds or blue) and should avoid detection.<br>
 Light intensity should depend on the environment lighting, during the dark no light should be emitted.
 ### Scripting support
-For those specially built drones with awesome sensors and motors.
+For those who want to make their drone do different things that are not supported natively.<br>
