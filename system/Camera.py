@@ -10,5 +10,5 @@ class Camera:
         camera.start_preview()
         sleep(2)
 
-    def capture(self, image):
-        camera.capture(image)
+    def capture(self, filePath):
+        camera.capture(filePath)
