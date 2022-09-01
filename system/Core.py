@@ -26,6 +26,7 @@ class Core:
         config.read('../drone.ini')
         self.droneType = config.general.type.lower()
         self.motorSystem.loadConfig(config.motors)
+        self.servoSystem.loadConfig(config.servos)
 
     def run(self):
         run = True

@@ -1,4 +1,10 @@
 class QuadcopterNavigation:
+    def launch(self, parent):
+        parent.motorSystem.setValueByType(Motor.TYPE_RIGHT_FRONT, Motor.SPEED_HIGH)
+        parent.motorSystem.setValueByType(Motor.TYPE_LEFT_BACK, Motor.SPEED_HIGH)
+        parent.motorSystem.setValueByType(Motor.TYPE_RIGHT_BACK, Motor.SPEED_HIGH)
+        parent.motorSystem.setValueByType(Motor.TYPE_LEFT_FRONT, Motor.SPEED_HIGH)
+
     def moveForward(self, parent):
         Navigation.targetRotation.x = 0
         Navigation.targetRotation.y = -45
@@ -22,10 +28,6 @@ class QuadcopterNavigation:
         elif Navigation.currentHeight > Navigation.targetHeight + 3:
             parent.motorSystem.setFrontMotors(Motor.SPEED_LOW)
             parent.motorSystem.setBackMotors(Motor.SPEED_LOW)
-
-    # Motor speeds by expected and current rotations
-    def getMotorSpeedByRotation(self, type, parent):
-
 
     # Rotation regulation has 5 degree allowed error margin.
     def rotationRegulation(self, parent):
