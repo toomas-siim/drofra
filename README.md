@@ -73,8 +73,8 @@ For various purposes: <br>
 * Null Signal Navigation<br>
 ### Null Signal Navigation (NSN)
 This is a rather complex feature, expecting lots of trial and error. <br>
-Basically the most dangerous thing for an UAV is using radio signals (incl GPS), hence using AI imaging analysis and path recognition<br>
-it should be possible to remember and fly back where you came from based on stored images during the flight.<br>
+Basically the most dangerous thing for an UAV is using radio signals (incl GPS), hence using AI imaging analysis and path recognition it should be possible to remember <br>
+and fly back where you came from based on stored images during the flight.<br>
 This avoids using any sorts of radio signals until it's near where it came from, accuracy doesn't have to be 100%, just enough for it to come back to friendly lines.<br>
 ### Optical Camouflage
 During the daytime, it's rather easy to spot a drone, especially if there's little cloud cover. <br>
