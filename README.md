@@ -82,3 +82,5 @@ Even if the drone is able to avoid RADAR there is always the risk of optical det
 So a camoflauge is needed, this consists of an LED cover under the drone which emits low intensity RGB light.<br>
 The RGB values are set by a top directed photon sensor. This will effectively mimic the color of the sky (be it clouds or blue) and should avoid detection.<br>
 Light intensity should depend on the environment lighting, during the dark no light should be emitted.
+### Scripting support
+For those specially built drones with awesome sensors and motors.
