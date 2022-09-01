@@ -6,6 +6,52 @@ You have a drone.ini file in the root folder, where you can configure it accordi
 Supports a number of sensors and systems like GPS, Motors, Servos, Gyro, Compass, Camera, Radio Comms etc...<br>
 This supports different types of drones as well, like quadcopters, planes and helicopters.
 
+## Drone configuration
+In the root directory there is a file called ```drone.ini```<br>
+Using that you should be able to configure the drone accordingly to your needs.
+### General
+* name ```name=Firefly```
+* type ```type=quadcopter``` options available: ```quadcopter, plane```
+### Motors
+* motor-left-front-pins: ```motor-left-front-pins=1``` (comma separated, quadcopter setting)
+* motor-right-front-pins: ```motor-right-front-pins=1``` (comma separated, quadcopter setting)
+* motor-left-back-pins: ```motor-left-back-pins=1``` (comma separated, quadcopter setting)
+* motor-right-back-pins: ```motor-right-back-pins=1``` (comma separated, quadcopter setting)
+* motor-front-pins: ```motor-front-pins=1``` (comma separated, plane setting)
+### Servos
+You can register an unlimited amount of servos.
+config keys must start with ```servo-```. <br>
+Structure of configuration: ```servo-my-servo={pin}:{type}:{centerPosition}```<br>
+Types are ```right, left, tail```. Tail is used to rotate a plane. (X Axis)<br>
+Example: ```servo-tail=7:tail:45```, ```servo-right=6:right:45```
+
+### Example ini
+#### Quadcopter
+```
+[general]
+name=Firefly
+type=quadcopter
+
+[motors]
+motor-left-front-pins=1
+motor-right-front-pins=2
+motor-left-back-pins=3
+motor-right-back-pins=4
+```
+#### Plane
+```
+[general]
+name=UAV
+type=plane
+
+[motors]
+motor-front-pins=1
+
+[servos]
+servo-left=5:left:45
+servo-right=6:right:45
+servo-tail=7:tail:45
+```
 ## Planned features
 ### Gyro stabilized gimbal camera control
 For those advanced UAV drones that want to focus on a single point while flying.
