@@ -1,4 +1,4 @@
-# Firefly
+# Drone framework - Drofra
 ## General
 Coded in python, the firefly drone isn't as much of a drone, more of a framework for drones.<br>
 You have a drone.ini file in the root folder, where you can configure it according to the technical specs you have set.<br>
