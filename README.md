@@ -76,10 +76,10 @@ This is a rather complex feature, expecting lots of trial and error. <br>
 Basically the most dangerous thing for an UAV is using radio signals (incl GPS), hence using AI imaging analysis and path recognition<br>
 it should be possible to remember and fly back where you came from based on stored images during the flight.<br>
 This avoids using any sorts of radio signals until it's near where it came from, accuracy doesn't have to be 100%, just enough for it to come back to friendly lines.<br>
-### Optical Camoflauge
-During the day time, it's rather easy to spot a drone, especially if there's little cloud cover. <br>
+### Optical Camouflage
+During the daytime, it's rather easy to spot a drone, especially if there's little cloud cover. <br>
 Even if the drone is able to avoid RADAR there is always the risk of optical detection.<br>
-So a camoflauge is needed, this consists of an LED cover under the drone which emits low intensity RGB light.<br>
+So a camouflage is needed, this consists of an LED cover under the drone which emits low intensity RGB light.<br>
 The RGB values are set by a top directed photon sensor. This will effectively mimic the color of the sky (be it clouds or blue) and should avoid detection.<br>
 Light intensity should depend on the environment lighting, during the dark no light should be emitted.
 ### Scripting support
