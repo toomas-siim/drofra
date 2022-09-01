@@ -26,6 +26,11 @@ config keys must start with ```servo-```. <br>
 Structure of configuration: ```servo-my-servo={pin}:{type}:{centerPosition}```<br>
 Types are ```right, left, tail```. Tail is used to rotate a plane. (X Axis)<br>
 Example: ```servo-tail=7:tail:45```, ```servo-right=6:right:45```
+### Sensors
+You can register an unlimited amount of sensors.
+config keys must start with ```sensor-```. <br>
+Structure of configuration: ```sensor-my-sensor={pin}:{type}```<br>
+***Work in progress***
 
 ### Example ini
 #### Quadcopter
