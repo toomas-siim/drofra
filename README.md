@@ -6,6 +6,9 @@ You have a drone.ini file in the root folder, where you can configure it accordi
 Supports a number of sensors and systems like GPS, Motors, Servos, Gyro, Compass, Camera, Radio Comms etc...<br>
 This supports different types of drones as well, like quadcopters, planes and helicopters.
 
+This also supports AI image classification, designed for various use. ***[Work in progress]***<br><br>
+Supports custom scripting, just add your script to the scripts folder and make custom commands. ***[Work in progress]***<br>
+
 Designed for Raspberry pi / Banana pi use.<br>
 
 ## Drone configuration
@@ -30,7 +33,7 @@ Example: ```servo-tail=7:tail:45```, ```servo-right=6:right:45```
 You can register an unlimited amount of sensors.
 config keys must start with ```sensor-```. <br>
 Structure of configuration: ```sensor-my-sensor={pin}:{type}```<br>
-***Work in progress***
+***[Work in progress]***
 
 ### Example ini
 #### Quadcopter
