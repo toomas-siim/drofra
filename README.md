@@ -8,6 +8,7 @@ This supports different types of drones as well, like quadcopters, planes and he
 
 This also supports AI image classification, designed for various use. ***[Work in progress]***<br><br>
 Supports custom scripting, just add your script to the scripts folder and make custom commands. ***[Work in progress]***<br>
+[Script documentation](SCRIPT_DOCUMENTATION.md)<br>
 
 Designed for Raspberry pi / Banana pi use.<br>
 
