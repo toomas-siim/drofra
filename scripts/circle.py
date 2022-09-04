@@ -23,7 +23,7 @@ class Circle:
             self.calcRotationPoints()
             self.currentPoint = 0
         if len(self.rotationPoints) > 0:
-            distance = Navigation.distanceFrom(self.rotationPoints[self.currentPoint].lat, self.rotationPoints[self.currentPoint].lon)
+            distance = Navigation.distanceFrom(self.rotationPoints[self.currentPoint].lat, self.rotationPoints[self.currentPoint].lon) / 1000
             if distance < 5:
                 if len(self.rotationPoints) <= self.currentPoint:
                     self.currentPoint = 0
