@@ -19,6 +19,7 @@ class Core:
         self.servoSystem = new Servo()
         self.loadConfig()
         Navigation.init(self)
+        Script.importAllScripts()
 
     def loadConfig(self):
         config = configparser.ConfigParser()
