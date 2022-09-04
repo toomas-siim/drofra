@@ -1,4 +1,7 @@
 
 class Hello:
     def handle(self, parent, payload):
-        print(payload)
+        if Command.myHostKey not None:
+            parent.communication.write({ exception: "Host already exists." })
+        else:
+            Command.myHostKey = payload.hostKey

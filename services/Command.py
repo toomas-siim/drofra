@@ -1,14 +1,13 @@
 import json
 
 class Command:
+    myHostKey = None
+
     def handle(parent):
         comms = parent.communication
-        readLine = comms.read()
+        payload = comms.read()
 
-        # @TODO: Verify host is recognized.
-
-        if readLine:
-            payload = json.loads(readLine)
+        if payload.hostKey is Command.myHostKey or Command.myHostKey is None:
             if payload.command is "hello":
                 handle = new Hello()
             elif payload.command is "bye":
