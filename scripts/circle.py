@@ -4,6 +4,8 @@ class Circle:
     rotationPoints = []
     currentPoint = 0
 
+    # @TODO: Probably should create an communication event, so host can update the circlePoint
+
     def init(self, coreHandle):
         self.coreHandle = coreHandle
 
