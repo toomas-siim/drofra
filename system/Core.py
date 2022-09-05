@@ -35,5 +35,6 @@ class Core:
         while run is True:
             time.sleep(0.01) # Sleep for a bit
             Command.handle(self)
+            Script.handleScripts(self)
             if self.flightStatus is True:
                 Navigation.handle(self)
