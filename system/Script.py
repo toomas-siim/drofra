@@ -8,9 +8,9 @@ class Script:
     def init(self, coreHandle):
         self.coreHandle = coreHandle
 
-    def handleScripts(coreHandle):
+    def handleScripts():
         for script in Script.scripts:
-            script.handle(coreHandle)
+            script.handle()
 
     def importAllScripts(coreHandle):
         scripts = getScriptsFromFolder("../scripts/")
