@@ -10,6 +10,9 @@ class Sensor(object):
         self.type = type
         self.name = type
 
+    def init(self, coreHandle):
+        self.parentHandle = coreHandle
+
     def addSensor(pinData, sensorType):
         Sensor.sensors.push({pinData: pinData, sensorType: sensorType})
 
