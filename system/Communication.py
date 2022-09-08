@@ -7,9 +7,14 @@ class Communication:
     endLine = "<end>"
     currentLine = ""
     encryptPassword = None
+    coreHandle = None
 
-    def init(self):
+    def init(self, coreHandle):
         spi.open("/dev/spidev2.0", mode=1)
+        self.coreHandle = coreHandle
+
+    def handle(self):
+        self.updateBufferLine()
 
     def loadConfig(self, config):
         Communication.encryptPassword = config.encryptPassword
@@ -18,12 +23,15 @@ class Communication:
         message = self.startLine + Communication.encryptString(message) + self.endLine
         spi.write(array.array('B', json.dumps(message)))
 
-    def read(self):
+    def updateBufferLine(self):
         self.currentLine += spi.read(2).decode("utf-8")
+
+    def read(self):
         if self.endLine in self.currentLine:
             result = self.currentLine
             self.currentLine = ""
-            return json.loads(Communication.decryptString(result.replace(self.startLine, '').replace(self.endLine, '')))
+            payload = json.loads(Communication.decryptString(result.replace(self.startLine, '').replace(self.endLine, '')))
+            return payload
         return ''
 
     def encryptString(message):

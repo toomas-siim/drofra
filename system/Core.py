@@ -18,6 +18,7 @@ class Core:
         self.motorSystem = new Motor()
         self.servoSystem = new Servo()
         self.loadConfig()
+        self.communication.init(self)
         Navigation.init(self)
         Script.importAllScripts()
 
@@ -35,6 +36,7 @@ class Core:
         while run is True:
             time.sleep(0.01) # Sleep for a bit
             Command.handle(self)
+            self.communication.handle()
             Script.handleScripts()
             if self.flightStatus is True:
                 Navigation.handle(self)
