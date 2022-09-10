@@ -6,7 +6,8 @@ class Event:
     def addListener(eventKey, callback):
         Event.listeners.push({"key": eventKey,"callback": callback})
 
-    def callEvents(calledEvent):
+    def callEvents(calledEvent, eventData):
         for event in Event.listeners:
             if event.key is calledEvent.key:
-                event.callback(calledEvent)
+                eventData.key = event.key
+                event.callback(eventData)

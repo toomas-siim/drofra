@@ -20,6 +20,7 @@ class Communication:
         Communication.encryptPassword = config.encryptPassword
 
     def write(self, messagePayload):
+        Event.callEvents('out-communication-payload', {"payload": message})
         message = self.startLine + Communication.encryptString(message) + self.endLine
         spi.write(array.array('B', json.dumps(message)))
 
@@ -31,6 +32,7 @@ class Communication:
             result = self.currentLine
             self.currentLine = ""
             payload = json.loads(Communication.decryptString(result.replace(self.startLine, '').replace(self.endLine, '')))
+            Event.callEvents('in-communication-payload', {"payload": payload})
             return payload
         return ''
 
