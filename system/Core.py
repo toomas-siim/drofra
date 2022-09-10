@@ -10,6 +10,7 @@ class Core:
     communication = null
     motorSystem = null
     servoSystem = null
+    timingSystem = null
 
     def init(self):
         self.pinSystem = new Pin()
@@ -17,10 +18,17 @@ class Core:
         self.communication = new Communication()
         self.motorSystem = new Motor()
         self.servoSystem = new Servo()
+        self.timingSystem = new Time()
         self.loadConfig()
         self.communication.init(self)
+        self.timingSystem.init(self)
         Navigation.init(self)
         Script.importAllScripts()
+
+    def initTimedFunctions(self):
+        self.timingSystem.addTimedFunction(1000, Command.handle)
+        self.timingSystem.addTimedFunction(10, self.communication.handle)
+        self.timingSystem.addTimedFunction(100, Script.handleScripts)
 
     def loadConfig(self):
         config = configparser.ConfigParser()
@@ -32,11 +40,10 @@ class Core:
         self.servoSystem.loadConfig(config.servos)
 
     def run(self):
+        # Run the looper
         run = True
         while run is True:
             time.sleep(0.01) # Sleep for a bit
-            Command.handle(self)
-            self.communication.handle()
-            Script.handleScripts()
+            self.timingSystem.handle()
             if self.flightStatus is True:
                 Navigation.handle(self)
