@@ -29,6 +29,7 @@ class Core:
         self.timingSystem.addTimedFunction(1000, Command.handle)
         self.timingSystem.addTimedFunction(10, self.communication.handle)
         self.timingSystem.addTimedFunction(100, Script.handleScripts)
+        self.timingSystem.addTimedFunction(30, Navigation.handle)
 
     def loadConfig(self):
         config = configparser.ConfigParser()
@@ -41,9 +42,7 @@ class Core:
 
     def run(self):
         # Run the looper
-        run = True
-        while run is True:
+        # Mostly consists of timed functions.
+        while True:
             time.sleep(0.01) # Sleep for a bit
             self.timingSystem.handle()
-            if self.flightStatus is True:
-                Navigation.handle(self)

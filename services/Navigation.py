@@ -3,6 +3,7 @@ from math import radians, cos, sin, asin, sqrt
 
 class Navigation:
     navigationHandle = null
+    coreHandle = None
 
     currentHeight = 0 # expected in cm
     targetHeight = 0 # expected in cm
@@ -15,19 +16,21 @@ class Navigation:
     speedTracker = {"lastCheck": 0, "lastPos": {"lat": 0, "lon": 0}}
 
     def init(parent):
+        Navigation.coreHandle = parent
         if parent.droneType is "quadcopter":
             Navigation.navigationHandle = new Quadcopter.QuadcopterNavigation()
         elif parent.droneType is "plane":
             Navigation.navigationHandle = new Plane.PlaneNavigation()
         Navigation.navigationHandle.level(parent)
 
-    def handle(parent):
+    def handle():
         # @TODO: Load position, rotation, height, compass
-        Navigation.moveToTarget(parent)
-        Navigation.alignToTarget(parent)
-        Navigation.navigationHandle.heightRegulation(parent)
-        Navigation.navigationHandle.rotationRegulation(parent)
-        Navigation.updateSpeedData(parent)
+        if Navigation.coreHandle.flightStatus is True:
+            Navigation.moveToTarget(Navigation.coreHandle)
+            Navigation.alignToTarget(Navigation.coreHandle)
+            Navigation.navigationHandle.heightRegulation(Navigation.coreHandle)
+            Navigation.navigationHandle.rotationRegulation(Navigation.coreHandle)
+            Navigation.updateSpeedData(Navigation.coreHandle)
 
     def moveToTarget(parent):
         distance = Navigation.distanceFrom(Navigation.targetPosition.lat, Navigation.targetPosition.lon) * 1000 # in meters
