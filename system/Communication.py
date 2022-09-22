@@ -39,6 +39,5 @@ class Communication:
     def decryptString(message):
         return cryptocode.decrypt(message, Communication.encryptPassword)
 
-    def close(self
-    ):
+    def close(self):
         self.methodHandle.close()
