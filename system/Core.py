@@ -57,3 +57,5 @@ class Core:
         while self.shutdown is False:
             time.sleep(0.01) # Sleep for a bit
             self.timingSystem.handle()
+
+        self.communication.close()

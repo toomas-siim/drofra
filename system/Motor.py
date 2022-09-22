@@ -16,6 +16,10 @@ class Motor:
     def init(self, parentHandle):
         self.parentHandle = parentHandle
 
+    def setAllMotors(self, value):
+        for motor in self.motors:
+            self.parentHandle.pinSystem.setPinOutput(motor.pin, value)
+
     def setValueByType(self, type, value):
         for motor in self.motors:
             if motor.type is type:
