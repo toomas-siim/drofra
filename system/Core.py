@@ -14,6 +14,7 @@ class Core:
     servoSystem = null
     timingSystem = null
     healthSystem = null
+    neuralNetwork = null
 
     def init(self):
         self.pinSystem = new Pin()
@@ -23,6 +24,7 @@ class Core:
         self.servoSystem = new Servo()
         self.timingSystem = new Time()
         self.healthSystem = new Health()
+        self.neuralNetwork = new NeuralNetwor()
         self.loadConfig()
         self.communication.init(self)
         self.timingSystem.init(self)
