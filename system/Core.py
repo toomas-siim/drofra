@@ -41,6 +41,7 @@ class Core:
         self.timingSystem.addTimedFunction(30, Navigation.handle)
         self.timingSystem.addTimedFunction(50, Sensor.handleSensors)
         self.timingSystem.addTimedFunction(3000, self.healthSystem.handle)
+        self.timingSystem.addTimedFunction(1000, self.neuralNetwork.handle)
 
     def loadConfig(self):
         config = configparser.ConfigParser()

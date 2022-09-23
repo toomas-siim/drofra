@@ -1,53 +1,56 @@
 from __future__ import division, print_function, absolute_import
 import tensorflow as tf
 
-mnist = input_data.read_data_sets("/tmp/data/", one_hot=False)
-# Training Parameters
-learning_rate = 0.001
-num_steps = 2000
-batch_size = 128
-
-# Network Parameters
-num_input = 784 # MNIST data input (img shape: 28*28)
-num_classes = 10 # MNIST total classes (0-9 digits)
-dropout = 0.25 # Dropout, probability to drop a unit
+mnist = input_data.read_data_sets("/tmp/data/", one_hot=False) # @TODO: Fix
 
 class NeuralNetwork:
     coreHandle = None
+    model = None
+
+    # Network Parameters
+    num_input = 128 * 128 # MNIST data input (img shape: 28*28)
+    num_classes = 10 # MNIST total classes (0-9 digits)
+    dropout = 0.25 # Dropout, probability to drop a unit
+
+    # Training Parameters
+    learning_rate = 0.001
+    num_steps = 2000
+    batch_size = 128
 
     def init(self, coreHandle):
         self.coreHandle = coreHandle
         # Build the Estimator
-        model = tf.estimator.Estimator(model_fn)
+        self.model = tf.estimator.Estimator(self.modelFunction)
 
         # Define the input function for training
         input_fn = tf.estimator.inputs.numpy_input_fn(
             x={'images': mnist.train.images}, y=mnist.train.labels,
-            batch_size=batch_size, num_epochs=None, shuffle=True)
-        # Train the Model
-        model.train(input_fn, steps=num_steps)
+            batch_size=self.batch_size, num_epochs=None, shuffle=True)
+        # Train the Model @TODO: Probably shouldn't train on each boot, rather on dataset update?
+        model.train(input_fn, steps=self.num_steps)
 
+    def handle(self):
         # Evaluate the Model
         # Define the input function for evaluating
         input_fn = tf.estimator.inputs.numpy_input_fn(
             x={'images': mnist.test.images}, y=mnist.test.labels,
-            batch_size=batch_size, shuffle=False)
+            batch_size=self.batch_size, shuffle=False)
         # Use the Estimator 'evaluate' method
         e = model.evaluate(input_fn)
 
         print("Testing Accuracy:", e['accuracy'])
 
     # Create the neural network
-    def conv_net(x_dict, n_classes, dropout, reuse, is_training):
+    def convNet(x_dict, n_classes, dropout, reuse, is_training):
         # Define a scope for reusing the variables
         with tf.variable_scope('ConvNet', reuse=reuse):
             # TF Estimator input is a dict, in case of multiple inputs
             x = x_dict['images']
 
-            # MNIST data input is a 1-D vector of 784 features (28*28 pixels)
+            # data input (128*128 pixels)
             # Reshape to match picture format [Height x Width x Channel]
             # Tensor input become 4-D: [Batch Size, Height, Width, Channel]
-            x = tf.reshape(x, shape=[-1, 28, 28, 1])
+            x = tf.reshape(x, shape=[-1, 128, 128, 1])
 
             # Convolution Layer with 32 filters and a kernel size of 5
             conv1 = tf.layers.conv2d(x, 32, 5, activation=tf.nn.relu)
@@ -73,13 +76,13 @@ class NeuralNetwork:
         return out
 
     # Define the model function (following TF Estimator Template)
-    def model_fn(features, labels, mode):
+    def modelFunction(features, labels, mode):
         # Build the neural network
         # Because Dropout have different behavior at training and prediction time, we
         # need to create 2 distinct computation graphs that still share the same weights.
-        logits_train = conv_net(features, num_classes, dropout, reuse=False,
+        logits_train = self.convNet(features, self.num_classes, self.dropout, reuse=False,
                                 is_training=True)
-        logits_test = conv_net(features, num_classes, dropout, reuse=True,
+        logits_test = self.convNet(features, self.num_classes, self.dropout, reuse=True,
                                is_training=False)
 
         # Predictions
@@ -93,7 +96,7 @@ class NeuralNetwork:
             # Define loss and optimizer
         loss_op = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
             logits=logits_train, labels=tf.cast(labels, dtype=tf.int32)))
-        optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
+        optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate)
         train_op = optimizer.minimize(loss_op,
                                       global_step=tf.train.get_global_step())
 
