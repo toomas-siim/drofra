@@ -13,7 +13,10 @@ num_classes = 10 # MNIST total classes (0-9 digits)
 dropout = 0.25 # Dropout, probability to drop a unit
 
 class NeuralNetwork:
-    def init():
+    coreHandle = None
+
+    def init(self, coreHandle):
+        self.coreHandle = coreHandle
         # Build the Estimator
         model = tf.estimator.Estimator(model_fn)
 
