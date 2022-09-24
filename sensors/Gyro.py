@@ -16,19 +16,19 @@ class Gyro(Sensor):
 
     def init(self, coreHandle):
         #write to sample rate register
-        bus.write_byte_data(Device_Address, self.SMPLRT_DIV, 7)
+        bus.write_byte_data(Device_Address, Gyro.SMPLRT_DIV, 7)
 
         #Write to power management register
-        bus.write_byte_data(Device_Address, self.PWR_MGMT_1, 1)
+        bus.write_byte_data(Device_Address, Gyro.PWR_MGMT_1, 1)
 
         #Write to Configuration register
-        bus.write_byte_data(Device_Address, self.CONFIG, 0)
+        bus.write_byte_data(Device_Address, Gyro.CONFIG, 0)
 
         #Write to Gyro configuration register
-        bus.write_byte_data(Device_Address, self.GYRO_CONFIG, 24)
+        bus.write_byte_data(Device_Address, Gyro.GYRO_CONFIG, 24)
 
         #Write to interrupt enable register
-        bus.write_byte_data(Device_Address, self.INT_ENABLE, 1)
+        bus.write_byte_data(Device_Address, Gyro.INT_ENABLE, 1)
 
     def read_raw_data(addr):
     	#Accelero and Gyro value are 16-bit
@@ -45,9 +45,9 @@ class Gyro(Sensor):
 
     def handle(self):
         #Read Gyroscope raw value
-        gyro_x = read_raw_data(self.GYRO_XOUT_H)
-        gyro_y = read_raw_data(self.GYRO_YOUT_H)
-        gyro_z = read_raw_data(self.GYRO_ZOUT_H)
-        self.GyroPos.x = gyro_x/131.0
-        self.GyroPos.y = gyro_y/131.0
-        self.GyroPos.z = gyro_z/131.0
+        gyro_x = read_raw_data(Gyro.GYRO_XOUT_H)
+        gyro_y = read_raw_data(Gyro.GYRO_YOUT_H)
+        gyro_z = read_raw_data(Gyro.GYRO_ZOUT_H)
+        Gyro.GyroPos.x = gyro_x/131.0
+        Gyro.GyroPos.y = gyro_y/131.0
+        Gyro.GyroPos.z = gyro_z/131.0

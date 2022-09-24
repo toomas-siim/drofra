@@ -24,7 +24,11 @@ class Navigation:
         Navigation.navigationHandle.level(parent)
 
     def handle():
-        # @TODO: Load position, rotation, height, compass
+        # @TODO: Load altitude
+        # Load data
+        Navigation.rotation = Gyro.GyroPos
+        Navigation.position = GPS.getPositionData()
+        Navigation.compassDirection = Compass.compassDirection
         if Navigation.coreHandle.flightStatus is True:
             Navigation.moveToTarget(Navigation.coreHandle)
             Navigation.alignToTarget(Navigation.coreHandle)
