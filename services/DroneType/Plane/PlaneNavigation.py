@@ -2,6 +2,9 @@ class PlaneNavigation:
     def launch(self, parent):
         parent.motorSystem.setForwardMotors(Motor.SPEED_HIGH)
 
+    def stop(self):
+        Navigation.coreHandle.motorSystem.setAllMotors(0)
+
     def moveForward(self, parent):
         Navigation.targetRotation.x = 0
         Navigation.targetRotation.y = 0

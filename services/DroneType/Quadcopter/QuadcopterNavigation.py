@@ -5,6 +5,9 @@ class QuadcopterNavigation:
         parent.motorSystem.setValueByType(Motor.TYPE_RIGHT_BACK, Motor.SPEED_HIGH)
         parent.motorSystem.setValueByType(Motor.TYPE_LEFT_FRONT, Motor.SPEED_HIGH)
 
+    def stop(self):
+        Navigation.coreHandle.motorSystem.setAllMotors(0)
+
     def moveForward(self, parent):
         Navigation.targetRotation.x = 0
         Navigation.targetRotation.y = -45

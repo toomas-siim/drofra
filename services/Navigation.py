@@ -31,6 +31,8 @@ class Navigation:
             Navigation.navigationHandle.heightRegulation(Navigation.coreHandle)
             Navigation.navigationHandle.rotationRegulation(Navigation.coreHandle)
             Navigation.updateSpeedData(Navigation.coreHandle)
+        else:
+            Navigation.navigationHandle.stop()
 
     def moveToTarget(parent):
         distance = Navigation.distanceFrom(Navigation.targetPosition.lat, Navigation.targetPosition.lon) * 1000 # in meters
