@@ -1,5 +1,5 @@
 class DataSet(object):
-    def __init__(self, images, labels, ids, cls):
+    def __init__(self, images, labels, ids):
         """Construct a DataSet. one_hot arg is used only if fake_data is true."""
 
         self._num_examples = images.shape[0]
@@ -14,7 +14,6 @@ class DataSet(object):
         self._images = images
         self._labels = labels
         self._ids = ids
-        self._cls = cls
         self._epochs_completed = 0
         self._index_in_epoch = 0
 
@@ -29,10 +28,6 @@ class DataSet(object):
     @property
     def ids(self):
         return self._ids
-
-    @property
-    def cls(self):
-        return self._cls
 
     @property
     def num_examples(self):
@@ -63,4 +58,4 @@ class DataSet(object):
             assert batch_size <= self._num_examples
         end = self._index_in_epoch
 
-        return self._images[start:end], self._labels[start:end], self._ids[start:end], self._cls[start:end]
+        return self._images[start:end], self._labels[start:end], self._ids[start:end]
