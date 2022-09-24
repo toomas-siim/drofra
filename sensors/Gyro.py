@@ -51,3 +51,4 @@ class Gyro(Sensor):
         Gyro.GyroPos.x = gyro_x/131.0
         Gyro.GyroPos.y = gyro_y/131.0
         Gyro.GyroPos.z = gyro_z/131.0
+        Navigation.rotation = Gyro.GyroPos

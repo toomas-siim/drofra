@@ -2,7 +2,7 @@ import gpsd
 
 class GPS(Sensor):
     def handle():
-
+        Navigation.position = GPS.getPositionData()
 
     def getPositionData():
     	nx = gpsd.next()
