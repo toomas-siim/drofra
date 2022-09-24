@@ -5,9 +5,6 @@ import cv2
 from sklearn.utils import shuffle
 
 NeuralNetwork:
-    dataTypes = []
-
-
     def load_train(train_path, image_size, classes):
         images = []
         labels = []
