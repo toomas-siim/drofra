@@ -5,20 +5,24 @@ class Radio:
     startLine = "<start>"
     endLine = "<end>"
     currentLine = ""
-    spiPath = None
+    spi = None
 
     def init(self, coreHandle):
         self.coreHandle = coreHandle
-        spi.open(self.spiPath, mode=1)
+        device = 1
+        self.spi = spidev.SpiDev()
+        self.spi.open(0, device)
+        self.spi.max_speed_hz = 500000
+        self.spi.mode = 0
 
     def loadConfig(self, config):
         self.spiPath = config["device-spi-path"]
 
     def handle(self):
-        self.currentLine += spi.read(2).decode("utf-8")
+        self.currentLine += self.spi.read(2).decode("utf-8")
 
     def write(self, message):
-        spi.write(message)
+        self.spi.write(message)
 
     def read(self):
         if self.endLine in self.currentLine:
@@ -30,4 +34,4 @@ class Radio:
         return None
 
     def close(self):
-        spi.close()
+        self.spi.close()
