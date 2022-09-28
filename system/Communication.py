@@ -15,8 +15,8 @@ class Communication:
         self.methodHandle.handle()
 
     def loadConfig(self, config):
-        Communication.encryptPassword = config.encryptPassword
-        Communication.method = config.method
+        Communication.encryptPassword = config['encryptPassword']
+        Communication.method = config['method']
         if Communication.method == 'radio':
             self.methodHandle = Radio()
         self.methodHandle.loadConfig(config)
