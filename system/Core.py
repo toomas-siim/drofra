@@ -27,6 +27,7 @@ class Core:
     neuralNetwork = None
 
     def init(self):
+        self.writeLog(" --- Initializing Drofra framework ---")
         self.pinSystem = Pin()
         self.cameraSystem = Camera()
         self.communication = Communication()
