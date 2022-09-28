@@ -16,7 +16,7 @@ class Radio:
             self.spi.max_speed_hz = 500000
             self.spi.mode = 0
         except:
-        coreHandle.writeLog("Failed opening radio component")
+            coreHandle.writeLog("Failed opening radio component")
 
     def loadConfig(self, config):
         self.spiPath = config["device-spi-path"]
