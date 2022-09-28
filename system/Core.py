@@ -58,7 +58,7 @@ class Core:
         config = configparser.ConfigParser()
         config.read('../drone.ini')
         config.sections()
-        print(config)
+        print(config['general'])
         self.droneType = config.general.type.lower()
         self.communication.loadConfig(config.communication)
         self.motorSystem.loadConfig(config.motors)
