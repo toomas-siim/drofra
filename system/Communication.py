@@ -18,7 +18,7 @@ class Communication:
         Communication.encryptPassword = config.encryptPassword
         Communication.method = config.method
         if Communication.method is 'radio':
-            self.methodHandle = new Radio()
+            self.methodHandle = Radio()
         self.methodHandle.loadConfig(config)
         self.methodHandle.init(coreHandle)
 
