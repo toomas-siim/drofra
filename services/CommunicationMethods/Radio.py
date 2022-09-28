@@ -9,7 +9,7 @@ class Radio:
 
     def init(self, coreHandle):
         self.coreHandle = coreHandle
-        device = 1
+        device = 0
         self.spi = spidev.SpiDev()
         self.spi.open(0, device)
         self.spi.max_speed_hz = 500000
