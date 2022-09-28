@@ -6,6 +6,11 @@ import configparser
 from system.Pin import Pin
 from system.Camera import Camera
 from system.Communication import Communication
+from system.Motor import Motor
+from system.Servo import Servo
+from system.Time import Time
+from system.Health import Health
+from system.NeuralNetwork import NeuralNetwork
 
 class Core:
     flightStatus = False
