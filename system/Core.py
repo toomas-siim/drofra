@@ -36,6 +36,7 @@ class Core:
         self.timingSystem = Time()
         self.healthSystem = Health()
         # self.neuralNetwork = NeuralNetwork()
+        self.pinSystem.init(self)
         self.communication.init(self)
         self.motorSystem.init(self)
         self.loadConfig()
