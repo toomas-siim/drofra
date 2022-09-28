@@ -1,4 +1,4 @@
-import system.Core
+import Core from system.Core
 
 core = Core()
 core.init()
