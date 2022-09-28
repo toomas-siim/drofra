@@ -1,4 +1,4 @@
-from pyGPIO2 import spi
+import spidev
 
 class Radio:
     coreHandle = None

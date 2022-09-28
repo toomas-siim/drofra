@@ -1,4 +1,4 @@
-from pyGPIO2.gpio import gpio
+import RPi.GPIO as GPIO
 
 class Motor:
     motors = []
