@@ -7,14 +7,14 @@ class Core:
     droneType = None
     shutdown = False
 
-    pinSystem = null
-    cameraSystem = null
-    communication = null
-    motorSystem = null
-    servoSystem = null
-    timingSystem = null
-    healthSystem = null
-    neuralNetwork = null
+    pinSystem = None
+    cameraSystem = None
+    communication = None
+    motorSystem = None
+    servoSystem = None
+    timingSystem = None
+    healthSystem = None
+    neuralNetwork = None
 
     def init(self):
         self.pinSystem = Pin()

@@ -2,9 +2,9 @@ class Sensor(object):
     SENSOR_TYPES = ["SENS_COMPASS", "SENS_ULTRASONIC", "SENS_GYRO", "SENS_GPS", "SENS_ATMOS", "SENS_ACCELERO"]
     sensors = []
 
-    name = null
-    type = null
-    parentHandle = null
+    name = None
+    type = None
+    parentHandle = None
 
     def __init__(self, name, type):
         self.type = type

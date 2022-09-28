@@ -2,7 +2,7 @@ from time import time
 from math import radians, cos, sin, asin, sqrt
 
 class Navigation:
-    navigationHandle = null
+    navigationHandle = None
     coreHandle = None
 
     currentHeight = 0 # expected in cm

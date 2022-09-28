@@ -2,7 +2,7 @@ from pyGPIO2.gpio import gpio
 
 class Motor:
     motors = []
-    parentHandle = null
+    parentHandle = None
     TYPE_LEFT_BACK = "left_back"
     TYPE_LEFT_FRONT = "left_front"
     TYPE_RIGHT_FRONT = "right_front"

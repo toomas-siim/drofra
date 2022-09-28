@@ -1,6 +1,6 @@
 class Servo:
     servos = []
-    parentHandle = null
+    parentHandle = None
 
     def init(self, parentHandle):
         self.parentHandle = parentHandle
