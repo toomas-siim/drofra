@@ -21,7 +21,7 @@ class Communication:
         if Communication.method == 'radio':
             self.methodHandle = Radio()
         self.methodHandle.loadConfig(config)
-        self.methodHandle.init(coreHandle)
+        self.methodHandle.init(self.coreHandle)
 
     def write(self, messagePayload):
         Event.callEvents('out-communication-payload', {"payload": message})
