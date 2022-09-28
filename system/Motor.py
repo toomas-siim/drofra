@@ -51,26 +51,31 @@ class Motor:
                     self.parentHandle.pinSystem.setPinOutput(motor.pin, value)
 
     def loadConfig(self, config):
-        for motor in config['motor-left-front-pins']:
-            pins = motor.split(",")
-            for pin in pins:
-                self.addMotor(self.TYPE_LEFT_FRONT, pin)
-        for motor in config['motor-left-back-pins']:
-            pins = motor.split(",")
-            for pin in pins:
-                self.addMotor(self.TYPE_LEFT_BACK, pin)
-        for motor in config['motor-right-front-pins']:
-            pins = motor.split(",")
-            for pin in pins:
-                self.addMotor(self.TYPE_RIGHT_FRONT, pin)
-        for motor in config['motor-right-back-pins']:
-            pins = motor.split(",")
-            for pin in pins:
-                self.addMotor(self.TYPE_RIGHT_BACK, pin)
-        for motor in config['motor-front-pins']:
-            pins = motor.split(",")
-            for pin in pins:
-                self.addMotor(self.TYPE_FRONT, pin)
+        if 'motor-left-front-pins' in config:
+            for motor in config['motor-left-front-pins']:
+                pins = motor.split(",")
+                for pin in pins:
+                    self.addMotor(self.TYPE_LEFT_FRONT, pin)
+        if 'motor-left-back-pins' in config:
+            for motor in config['motor-left-back-pins']:
+                pins = motor.split(",")
+                for pin in pins:
+                    self.addMotor(self.TYPE_LEFT_BACK, pin)
+        if 'motor-right-front-pins' in config:
+            for motor in config['motor-right-front-pins']:
+                pins = motor.split(",")
+                for pin in pins:
+                    self.addMotor(self.TYPE_RIGHT_FRONT, pin)
+        if 'motor-right-back-pins' in config:
+            for motor in config['motor-right-back-pins']:
+                pins = motor.split(",")
+                for pin in pins:
+                    self.addMotor(self.TYPE_RIGHT_BACK, pin)
+        if 'motor-front-pins' in config:
+            for motor in config['motor-front-pins']:
+                pins = motor.split(",")
+                for pin in pins:
+                    self.addMotor(self.TYPE_FRONT, pin)
 
     def addMotor(self, type, pin):
         self.parentHandle.pinSystem.setPinType(pin, GPIO.OUT)
