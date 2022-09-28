@@ -11,9 +11,12 @@ class Radio:
         self.coreHandle = coreHandle
         device = 0
         self.spi = spidev.SpiDev()
-        self.spi.open(0, device)
-        self.spi.max_speed_hz = 500000
-        self.spi.mode = 0
+        try:
+            self.spi.open(0, device)
+            self.spi.max_speed_hz = 500000
+            self.spi.mode = 0
+        except:
+        coreHandle.writeLog("Failed opening radio component")
 
     def loadConfig(self, config):
         self.spiPath = config["device-spi-path"]
