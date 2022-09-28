@@ -38,7 +38,7 @@ class Sensor(object):
         elif sensorType == "SENS_ACCELERO":
             sensorHandle = Accelerometer()
 
-        if sensorHandle == not None:
+        if sensorHandle != None:
             sensorHandle.init()
             Sensor.sensors.push({pinData: pinData, sensorType: sensorType, handle: sensorHandle})
             Sensor.parentHandle.writeLog("Registered new sensor: ", sensorType)

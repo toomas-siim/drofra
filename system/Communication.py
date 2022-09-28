@@ -29,7 +29,7 @@ class Communication:
 
     def read(self):
         data = self.methodHandle.read()
-        if data == not None:
+        if data != None:
             Event.callEvents('in-communication-payload', {"payload": payload})
             return data
 
