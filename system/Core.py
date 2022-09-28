@@ -2,6 +2,11 @@ import time
 from datetime import datetime
 import configparser
 
+# Packages
+from system.Pin import Pin
+from system.Camera import Camera
+from system.Communication import Communication
+
 class Core:
     flightStatus = False
     droneType = None
