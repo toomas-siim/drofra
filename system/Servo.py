@@ -11,7 +11,7 @@ class Servo:
                 self.parentHandle.pinSystem.setPinOutput(servo.pin, servo.centerPos + value)
 
     def addServo(pin, type, centerPos):
-        self.parentHandle.pinSystem.setPinType(pin, gpio.OUTPUT)
+        self.parentHandle.pinSystem.setPinType(pin, GPIO.OUT)
         servos.append({"type": type, "pin": pin, "centerPos": centerPos})
 
     def loadConfig(self, config):

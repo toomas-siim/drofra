@@ -12,8 +12,8 @@ class Ultrasonic(Sensor):
         if self.waitingForSignal is False and time.time() - self.signalStart >= 1:
             self.waitingForSignal = True
             self.signalStart = time.time()
-            self.pinSystem.setPinType(self.writePin, gpio.OUTPUT)
-            self.pinSystem.setPinType(self.readPin, gpio.INPUT)
+            self.pinSystem.setPinType(self.writePin, GPIO.OUT)
+            self.pinSystem.setPinType(self.readPin, GPIO.IN)
         elif self.waitingForSignal is True:
             if coreHandle.pinSystem.getPinInput(self.readPin) is 1:
                 self.waitingForSignal = False
