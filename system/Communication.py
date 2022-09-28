@@ -1,6 +1,6 @@
 import cryptocode
 import array
-from service.CommunicationMethods.Radio import Radio
+from services.CommunicationMethods.Radio import Radio
 
 class Communication:
     encryptPassword = None
