@@ -27,7 +27,7 @@ class Radio:
     def read(self):
         if self.endLine in self.currentLine:
             payload = json.loads(Communication.decryptString(self.currentLine.replace(self.startLine, '').replace(self.endLine, '')))
-            if payload is None:
+            if payload == None:
                 self.coreHandle.writeLog("Invalid payload: ", self.currentLine)
             self.currentLine = ""
             return payload

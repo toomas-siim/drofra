@@ -7,7 +7,7 @@ class Servo:
 
     def setValueByType(self, type, value):
         for servo in self.servos:
-            if servo.type is type:
+            if servo.type == type:
                 self.parentHandle.pinSystem.setPinOutput(servo.pin, servo.centerPos + value)
 
     def addServo(pin, type, centerPos):

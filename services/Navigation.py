@@ -17,15 +17,15 @@ class Navigation:
 
     def init(parent):
         Navigation.coreHandle = parent
-        if parent.droneType is "quadcopter":
+        if parent.droneType == "quadcopter":
             Navigation.navigationHandle = Quadcopter.QuadcopterNavigation()
-        elif parent.droneType is "plane":
+        elif parent.droneType == "plane":
             Navigation.navigationHandle = Plane.PlaneNavigation()
         Navigation.navigationHandle.level(parent)
 
     def handle():
         # @TODO: Load altitude
-        if Navigation.coreHandle.flightStatus is True:
+        if Navigation.coreHandle.flightStatus == True:
             Navigation.moveToTarget(Navigation.coreHandle)
             Navigation.alignToTarget(Navigation.coreHandle)
             Navigation.navigationHandle.heightRegulation(Navigation.coreHandle)
@@ -58,7 +58,7 @@ class Navigation:
         elif latDifference > 0:
             direction = 90
 
-        if direction is 0:
+        if direction == 0:
             if lonDifference < 0:
                 direction = 0
             elif lonDifference > 0:

@@ -9,7 +9,7 @@ class Circle:
         Event.addListener("in-communication-payload", self.gpsChange)
 
     def gpsChange(self, eventData):
-        if eventData.payload.command is "host-gps-location":
+        if eventData.payload.command == "host-gps-location":
             self.circlePoint = eventData.payload.coordinates
 
     def calcRotationPoints(self):
@@ -24,7 +24,7 @@ class Circle:
         self.rotationPoints.push({ lat: circlePoint.lat - latLengthInKm, lon: circlePoint.lat + lonLengthInKm })
 
     def handle(self):
-        if self.circlePoint is None:
+        if self.circlePoint == None:
             self.circlePoint = GPS.getPositionData()
             if self.circlePoint != None:
                 self.calcRotationPoints()

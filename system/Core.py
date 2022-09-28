@@ -68,7 +68,7 @@ class Core:
     def run(self):
         # Run the looper
         # Mostly consists of timed functions.
-        while self.shutdown is False:
+        while self.shutdown == False:
             time.sleep(0.01) # Sleep for a bit
             self.timingSystem.handle()
 

@@ -25,20 +25,20 @@ class Sensor(object):
 
     def addSensor(pinData, sensorType):
         sensorHandle = None
-        if sensorType is "SENS_COMPASS":
+        if sensorType == "SENS_COMPASS":
             sensorHandle = Compass()
-        elif sensorTyoe is "SENS_ULTRASONIC":
+        elif sensorTyoe == "SENS_ULTRASONIC":
             sensorHandle = Ultrasonic()
-        elif sensorType is "SENS_GYRO"
+        elif sensorType == "SENS_GYRO"
             sensorHandle = Gyro()
-        elif sensorType is "SENS_GPS":
+        elif sensorType == "SENS_GPS":
             sensorHandle = GPS()
-        elif sensorType is "SENS_ATMOS"
+        elif sensorType == "SENS_ATMOS"
             sensorHandle = AtmosPressure()
-        elif sensorType is "SENS_ACCELERO":
+        elif sensorType == "SENS_ACCELERO":
             sensorHandle = Accelerometer()
 
-        if sensorHandle is not None:
+        if sensorHandle == not None:
             sensorHandle.init()
             Sensor.sensors.push({pinData: pinData, sensorType: sensorType, handle: sensorHandle})
             Sensor.parentHandle.writeLog("Registered new sensor: ", sensorType)
@@ -52,7 +52,7 @@ class Sensor(object):
             sensorType = None
             for pinData in configData:
                 pinData = pinData.split(':')
-                if sensorType is None:
+                if sensorType == None:
                     sensorType = pinData[2]
                 sensorData.push({pin: pinData[0], pinType: pinData[1]})
             if sensorType not None:

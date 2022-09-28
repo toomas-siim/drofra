@@ -9,13 +9,13 @@ class Ultrasonic(Sensor):
     writePin = 1
 
     def handle(self, coreHandle):
-        if self.waitingForSignal is False and time.time() - self.signalStart >= 1:
+        if self.waitingForSignal == False and time.time() - self.signalStart >= 1:
             self.waitingForSignal = True
             self.signalStart = time.time()
             self.pinSystem.setPinType(self.writePin, GPIO.OUT)
             self.pinSystem.setPinType(self.readPin, GPIO.IN)
-        elif self.waitingForSignal is True:
-            if coreHandle.pinSystem.getPinInput(self.readPin) is 1:
+        elif self.waitingForSignal == True:
+            if coreHandle.pinSystem.getPinInput(self.readPin) == 1:
                 self.waitingForSignal = False
                 self.latestDistance = ((time.time() - self.signalStart) * 34300) / 2
 

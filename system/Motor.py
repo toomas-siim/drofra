@@ -22,32 +22,32 @@ class Motor:
 
     def setValueByType(self, type, value):
         for motor in self.motors:
-            if motor.type is type:
+            if motor.type == type:
                 self.parentHandle.pinSystem.setPinOutput(motor.pin, value)
 
     def setBackMotors(self, value):
         for motor in self.motors:
-            if motor.type is self.TYPE_LEFT_BACK or motor.type is self.TYPE_RIGHT_BACK:
+            if motor.type == self.TYPE_LEFT_BACK or motor.type == self.TYPE_RIGHT_BACK:
                 self.parentHandle.pinSystem.setPinOutput(motor.pin, value)
 
     def setFrontMotors(self, value):
         for motor in self.motors:
-            if motor.type is self.TYPE_LEFT_FRONT or motor.type is self.TYPE_RIGHT_FRONT:
+            if motor.type == self.TYPE_LEFT_FRONT or motor.type == self.TYPE_RIGHT_FRONT:
                 self.parentHandle.pinSystem.setPinOutput(motor.pin, value)
 
     def setLeftMotors(self, value):
         for motor in self.motors:
-            if motor.type is self.TYPE_LEFT_FRONT or motor.type is self.TYPE_LEFT_BACK:
+            if motor.type == self.TYPE_LEFT_FRONT or motor.type == self.TYPE_LEFT_BACK:
                 self.parentHandle.pinSystem.setPinOutput(motor.pin, value)
 
     def setRightMotors(self, value):
         for motor in self.motors:
-            if motor.type is self.TYPE_RIGHT_FRONT or motor.type is self.TYPE_RIGHT_BACK:
+            if motor.type == self.TYPE_RIGHT_FRONT or motor.type == self.TYPE_RIGHT_BACK:
                 self.parentHandle.pinSystem.setPinOutput(motor.pin, value)
 
     def setForwardMotors(self, value):
             for motor in self.motors:
-                if motor.type is self.TYPE_FRONT:
+                if motor.type == self.TYPE_FRONT:
                     self.parentHandle.pinSystem.setPinOutput(motor.pin, value)
 
     def loadConfig(self, config):

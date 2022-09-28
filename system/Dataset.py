@@ -1,6 +1,6 @@
 class DataSet(object):
     def __init__(self, images, labels, ids):
-        """Construct a DataSet. one_hot arg is used only if fake_data is true."""
+        """Construct a DataSet. one_hot arg == used only if fake_data == true."""
 
         self._num_examples = images.shape[0]
 

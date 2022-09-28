@@ -17,7 +17,7 @@ class Communication:
     def loadConfig(self, config):
         Communication.encryptPassword = config.encryptPassword
         Communication.method = config.method
-        if Communication.method is 'radio':
+        if Communication.method == 'radio':
             self.methodHandle = Radio()
         self.methodHandle.loadConfig(config)
         self.methodHandle.init(coreHandle)
@@ -29,7 +29,7 @@ class Communication:
 
     def read(self):
         data = self.methodHandle.read()
-        if data is not None:
+        if data == not None:
             Event.callEvents('in-communication-payload', {"payload": payload})
             return data
 
