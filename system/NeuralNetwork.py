@@ -8,7 +8,7 @@ from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 import pathlib
 
-NeuralNetwork:
+class NeuralNetwork:
     coreHandle = None
     model = None
     classNames = None
