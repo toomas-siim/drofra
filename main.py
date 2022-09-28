@@ -1,5 +1,5 @@
 import Core
 
-core = new Core()
+core = Core()
 core.init()
 core.run()

@@ -18,9 +18,9 @@ class Navigation:
     def init(parent):
         Navigation.coreHandle = parent
         if parent.droneType is "quadcopter":
-            Navigation.navigationHandle = new Quadcopter.QuadcopterNavigation()
+            Navigation.navigationHandle = Quadcopter.QuadcopterNavigation()
         elif parent.droneType is "plane":
-            Navigation.navigationHandle = new Plane.PlaneNavigation()
+            Navigation.navigationHandle = Plane.PlaneNavigation()
         Navigation.navigationHandle.level(parent)
 
     def handle():

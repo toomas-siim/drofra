@@ -16,13 +16,13 @@ class Core:
     healthSystem = null
 
     def init(self):
-        self.pinSystem = new Pin()
-        self.cameraSystem = new Camera()
-        self.communication = new Communication()
-        self.motorSystem = new Motor()
-        self.servoSystem = new Servo()
-        self.timingSystem = new Time()
-        self.healthSystem = new Health()
+        self.pinSystem = Pin()
+        self.cameraSystem = Camera()
+        self.communication = Communication()
+        self.motorSystem = Motor()
+        self.servoSystem = Servo()
+        self.timingSystem = Time()
+        self.healthSystem = Health()
         self.loadConfig()
         self.communication.init(self)
         self.timingSystem.init(self)

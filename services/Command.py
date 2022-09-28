@@ -9,9 +9,9 @@ class Command:
 
         if payload.hostKey is Command.myHostKey or Command.myHostKey is None:
             if payload.command is "hello":
-                handle = new Hello()
+                handle = Hello()
             elif payload.command is "bye":
-                handle = new Bye()
+                handle = Bye()
             elif payload.command is "fly":
-                handle = new Fly()
+                handle = Fly()
             handle.handle(parent, payload)

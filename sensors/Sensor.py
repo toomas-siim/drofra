@@ -26,17 +26,17 @@ class Sensor(object):
     def addSensor(pinData, sensorType):
         sensorHandle = None
         if sensorType is "SENS_COMPASS":
-            sensorHandle = new Compass()
+            sensorHandle = Compass()
         elif sensorTyoe is "SENS_ULTRASONIC":
-            sensorHandle = new Ultrasonic()
+            sensorHandle = Ultrasonic()
         elif sensorType is "SENS_GYRO"
-            sensorHandle = new Gyro()
+            sensorHandle = Gyro()
         elif sensorType is "SENS_GPS":
-            sensorHandle = new GPS()
+            sensorHandle = GPS()
         elif sensorType is "SENS_ATMOS"
-            sensorHandle = new AtmosPressure()
+            sensorHandle = AtmosPressure()
         elif sensorType is "SENS_ACCELERO":
-            sensorHandle = new Accelerometer()
+            sensorHandle = Accelerometer()
 
         if sensorHandle is not None:
             sensorHandle.init()
