@@ -11,6 +11,11 @@ class Time:
     def addTimedFunction(self, intervalMs, callback):
         self.timedFunctions.push({"lastTrigger": (time.time() * 1000), "intervalMs": intervalMs, "trigger": callback})
 
+    def getRunTime(self):
+        if self.startTime is None:
+            return 0
+        return time.time() - self.startTime
+
     def handle(self):
         for timedFunction in self.timedFunctions:
             if (time.time() * 1000) - timedFunction.lastTrigger > timedFunction.intervalMs:

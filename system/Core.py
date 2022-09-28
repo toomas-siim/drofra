@@ -14,6 +14,7 @@ class Core:
     servoSystem = null
     timingSystem = null
     healthSystem = null
+    neuralNetwork = null
 
     def init(self):
         self.pinSystem = Pin()
@@ -23,10 +24,12 @@ class Core:
         self.servoSystem = Servo()
         self.timingSystem = Time()
         self.healthSystem = Health()
+        self.neuralNetwork = NeuralNetwork()
         self.loadConfig()
         self.communication.init(self)
         self.timingSystem.init(self)
         self.healthSystem.init(self)
+        self.neuralNetwork.init(self)
         Navigation.init(self)
         Sensor.initSensorSystem()
         Script.importAllScripts()
@@ -38,6 +41,7 @@ class Core:
         self.timingSystem.addTimedFunction(30, Navigation.handle)
         self.timingSystem.addTimedFunction(50, Sensor.handleSensors)
         self.timingSystem.addTimedFunction(3000, self.healthSystem.handle)
+        self.timingSystem.addTimedFunction(1000, self.neuralNetwork.handle)
 
     def loadConfig(self):
         config = configparser.ConfigParser()
@@ -57,3 +61,5 @@ class Core:
         while self.shutdown is False:
             time.sleep(0.01) # Sleep for a bit
             self.timingSystem.handle()
+
+        self.communication.close()

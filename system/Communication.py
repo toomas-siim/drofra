@@ -1,40 +1,37 @@
-from pyGPIO2 import spi
 import cryptocode
 import array
 
 class Communication:
-    startLine = "<start>"
-    endLine = "<end>"
-    currentLine = ""
     encryptPassword = None
     coreHandle = None
+    method = None
+    methodHandle = None
 
     def init(self, coreHandle):
-        spi.open("/dev/spidev2.0", mode=1)
         self.coreHandle = coreHandle
+        coreHandle.writeLog("Initializing communication system.")
 
     def handle(self):
-        self.updateBufferLine()
+        self.methodHandle.handle()
 
     def loadConfig(self, config):
         Communication.encryptPassword = config.encryptPassword
+        Communication.method = config.method
+        if Communication.method is 'radio':
+            self.methodHandle = new Radio()
+        self.methodHandle.loadConfig(config)
+        self.methodHandle.init(coreHandle)
 
     def write(self, messagePayload):
         Event.callEvents('out-communication-payload', {"payload": message})
         message = self.startLine + Communication.encryptString(message) + self.endLine
-        spi.write(array.array('B', json.dumps(message)))
-
-    def updateBufferLine(self):
-        self.currentLine += spi.read(2).decode("utf-8")
+        self.methodHandle.write(array.array('B', json.dumps(message)))
 
     def read(self):
-        if self.endLine in self.currentLine:
-            result = self.currentLine
-            self.currentLine = ""
-            payload = json.loads(Communication.decryptString(result.replace(self.startLine, '').replace(self.endLine, '')))
+        data = self.methodHandle.read()
+        if data is not None:
             Event.callEvents('in-communication-payload', {"payload": payload})
-            return payload
-        return ''
+            return data
 
     def encryptString(message):
         return cryptocode.encrypt(message, Communication.encryptPassword)
@@ -42,5 +39,5 @@ class Communication:
     def decryptString(message):
         return cryptocode.decrypt(message, Communication.encryptPassword)
 
-    def close():
-        spi.close()
+    def close(self):
+        self.methodHandle.close()
