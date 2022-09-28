@@ -59,9 +59,9 @@ class Core:
         config.read('drone.ini')
         config.sections()
         self.droneType = config['general']['type'].lower()
-        self.communication.loadConfig(config.communication)
-        self.motorSystem.loadConfig(config.motors)
-        self.servoSystem.loadConfig(config.servos)
+        self.communication.loadConfig(config['communication'])
+        self.motorSystem.loadConfig(config.['motors'])
+        self.servoSystem.loadConfig(config.['servos'])
 
     def writeLog(self, message):
         print(datetime.now(), message)
