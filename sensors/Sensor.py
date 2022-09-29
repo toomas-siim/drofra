@@ -2,9 +2,9 @@ class Sensor(object):
     SENSOR_TYPES = ["SENS_COMPASS", "SENS_ULTRASONIC", "SENS_GYRO", "SENS_GPS", "SENS_ATMOS", "SENS_ACCELERO"]
     sensors = []
 
-    name = null
-    type = null
-    parentHandle = null
+    name = None
+    type = None
+    parentHandle = None
 
     def __init__(self, name, type):
         self.type = type
@@ -25,20 +25,20 @@ class Sensor(object):
 
     def addSensor(pinData, sensorType):
         sensorHandle = None
-        if sensorType is "SENS_COMPASS":
-            sensorHandle = new Compass()
-        elif sensorTyoe is "SENS_ULTRASONIC":
-            sensorHandle = new Ultrasonic()
-        elif sensorType is "SENS_GYRO"
-            sensorHandle = new Gyro()
-        elif sensorType is "SENS_GPS":
-            sensorHandle = new GPS()
-        elif sensorType is "SENS_ATMOS"
-            sensorHandle = new AtmosPressure()
-        elif sensorType is "SENS_ACCELERO":
-            sensorHandle = new Accelerometer()
+        if sensorType == "SENS_COMPASS":
+            sensorHandle = Compass()
+        elif sensorTyoe == "SENS_ULTRASONIC":
+            sensorHandle = Ultrasonic()
+        elif sensorType == "SENS_GYRO"
+            sensorHandle = Gyro()
+        elif sensorType == "SENS_GPS":
+            sensorHandle = GPS()
+        elif sensorType == "SENS_ATMOS"
+            sensorHandle = AtmosPressure()
+        elif sensorType == "SENS_ACCELERO":
+            sensorHandle = Accelerometer()
 
-        if sensorHandle is not None:
+        if sensorHandle != None:
             sensorHandle.init()
             Sensor.sensors.push({pinData: pinData, sensorType: sensorType, handle: sensorHandle})
             Sensor.parentHandle.writeLog("Registered new sensor: ", sensorType)
@@ -52,7 +52,7 @@ class Sensor(object):
             sensorType = None
             for pinData in configData:
                 pinData = pinData.split(':')
-                if sensorType is None:
+                if sensorType == None:
                     sensorType = pinData[2]
                 sensorData.push({pin: pinData[0], pinType: pinData[1]})
             if sensorType not None:

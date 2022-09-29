@@ -1,15 +1,16 @@
-from pyGPIO2.gpio import gpio
+import RPi.GPIO as GPIO
 
 class Pin:
     def init(self):
-        gpio.init()
+        GPIO.setmode(GPIO.BOARD)
 
     def setPinType(self, pin, type):
-        gpio.setcfg(pin, type)
+        GPIO.setup(int(pin), type)
 
     def setPinOutput(self, pin, output):
         # @TODO: Validate min / max values
-        gpio.output(pin, output)
+        # @TODO: Handle PWM as well?
+        GPIO.output(int(pin), output)
 
     def getPinInput(self, pin):
-        return gpio.input(pin)
+        return GPIO.input(int(pin))

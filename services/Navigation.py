@@ -2,7 +2,7 @@ from time import time
 from math import radians, cos, sin, asin, sqrt
 
 class Navigation:
-    navigationHandle = null
+    navigationHandle = None
     coreHandle = None
 
     currentHeight = 0 # expected in cm
@@ -17,15 +17,15 @@ class Navigation:
 
     def init(parent):
         Navigation.coreHandle = parent
-        if parent.droneType is "quadcopter":
-            Navigation.navigationHandle = new Quadcopter.QuadcopterNavigation()
-        elif parent.droneType is "plane":
-            Navigation.navigationHandle = new Plane.PlaneNavigation()
+        if parent.droneType == "quadcopter":
+            Navigation.navigationHandle = Quadcopter.QuadcopterNavigation()
+        elif parent.droneType == "plane":
+            Navigation.navigationHandle = Plane.PlaneNavigation()
         Navigation.navigationHandle.level(parent)
 
     def handle():
         # @TODO: Load altitude
-        if Navigation.coreHandle.flightStatus is True:
+        if Navigation.coreHandle.flightStatus == True:
             Navigation.moveToTarget(Navigation.coreHandle)
             Navigation.alignToTarget(Navigation.coreHandle)
             Navigation.navigationHandle.heightRegulation(Navigation.coreHandle)
@@ -58,7 +58,7 @@ class Navigation:
         elif latDifference > 0:
             direction = 90
 
-        if direction is 0:
+        if direction == 0:
             if lonDifference < 0:
                 direction = 0
             elif lonDifference > 0:

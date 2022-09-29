@@ -1,5 +1,6 @@
 import cryptocode
 import array
+from services.CommunicationMethods.Radio import Radio
 
 class Communication:
     encryptPassword = None
@@ -15,12 +16,12 @@ class Communication:
         self.methodHandle.handle()
 
     def loadConfig(self, config):
-        Communication.encryptPassword = config.encryptPassword
-        Communication.method = config.method
-        if Communication.method is 'radio':
-            self.methodHandle = new Radio()
+        Communication.encryptPassword = config['encryptPassword']
+        Communication.method = config['method']
+        if Communication.method == 'radio':
+            self.methodHandle = Radio()
         self.methodHandle.loadConfig(config)
-        self.methodHandle.init(coreHandle)
+        self.methodHandle.init(self.coreHandle)
 
     def write(self, messagePayload):
         Event.callEvents('out-communication-payload', {"payload": message})
@@ -29,7 +30,7 @@ class Communication:
 
     def read(self):
         data = self.methodHandle.read()
-        if data is not None:
+        if data != None:
             Event.callEvents('in-communication-payload', {"payload": payload})
             return data
 

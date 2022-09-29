@@ -7,11 +7,11 @@ class Command:
         comms = parent.communication
         payload = comms.read()
 
-        if payload.hostKey is Command.myHostKey or Command.myHostKey is None:
-            if payload.command is "hello":
-                handle = new Hello()
-            elif payload.command is "bye":
-                handle = new Bye()
-            elif payload.command is "fly":
-                handle = new Fly()
+        if payload.hostKey == Command.myHostKey or Command.myHostKey == None:
+            if payload.command == "hello":
+                handle = Hello()
+            elif payload.command == "bye":
+                handle = Bye()
+            elif payload.command == "fly":
+                handle = Fly()
             handle.handle(parent, payload)

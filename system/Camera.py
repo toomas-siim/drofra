@@ -2,7 +2,7 @@ from picamera import PiCamera
 from time import sleep
 
 class Camera:
-    handle = null
+    handle = None
 
     def init(self):
         self.handle = PiCamera()

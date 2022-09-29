@@ -4,6 +4,6 @@ class Health:
         self.coreHandle = coreHandle
 
     def handle(self):
-        if self.coreHandle.droneType is None:
+        if self.coreHandle.droneType == None:
             self.coreHandle.writeLog("Drone system fatal failure, drone type unconfigured. Check drone.ini file.")
             self.coreHandle.shutdown = True

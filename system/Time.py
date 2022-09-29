@@ -12,7 +12,7 @@ class Time:
         self.timedFunctions.push({"lastTrigger": (time.time() * 1000), "intervalMs": intervalMs, "trigger": callback})
 
     def getRunTime(self):
-        if self.startTime is None:
+        if self.startTime == None:
             return 0
         return time.time() - self.startTime
 

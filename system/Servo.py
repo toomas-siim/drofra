@@ -1,17 +1,17 @@
 class Servo:
     servos = []
-    parentHandle = null
+    parentHandle = None
 
     def init(self, parentHandle):
         self.parentHandle = parentHandle
 
     def setValueByType(self, type, value):
         for servo in self.servos:
-            if servo.type is type:
+            if servo.type == type:
                 self.parentHandle.pinSystem.setPinOutput(servo.pin, servo.centerPos + value)
 
     def addServo(pin, type, centerPos):
-        self.parentHandle.pinSystem.setPinType(pin, gpio.OUTPUT)
+        self.parentHandle.pinSystem.setPinType(pin, GPIO.OUT)
         servos.append({"type": type, "pin": pin, "centerPos": centerPos})
 
     def loadConfig(self, config):
