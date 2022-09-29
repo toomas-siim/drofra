@@ -14,14 +14,14 @@ class Circle:
 
     def calcRotationPoints(self):
         # 100 m radius
-        latLengthInKm = ((1/111) / 1000) * 100
-        lonLengthInKm = ((1/111.321) / 1000) * 100
+        latLength = ((1/111) / 1000) * 100
+        lonLength = ((1/111.321) / 1000) * 100
         circlePoint = self.circlePoint
         self.rotationPoints = []
-        self.rotationPoints.push({ lat: circlePoint.lat - latLengthInKm, lon: circlePoint.lat - lonLengthInKm })
-        self.rotationPoints.push({ lat: circlePoint.lat + latLengthInKm, lon: circlePoint.lat - lonLengthInKm })
-        self.rotationPoints.push({ lat: circlePoint.lat + latLengthInKm, lon: circlePoint.lat + lonLengthInKm })
-        self.rotationPoints.push({ lat: circlePoint.lat - latLengthInKm, lon: circlePoint.lat + lonLengthInKm })
+        self.rotationPoints.push({ lat: circlePoint.lat - latLength, lon: circlePoint.lat - lonLength })
+        self.rotationPoints.push({ lat: circlePoint.lat + latLength, lon: circlePoint.lat - lonLength })
+        self.rotationPoints.push({ lat: circlePoint.lat + latLength, lon: circlePoint.lat + lonLength })
+        self.rotationPoints.push({ lat: circlePoint.lat - latLength, lon: circlePoint.lat + lonLength })
 
     def handle(self):
         if self.circlePoint is None:
