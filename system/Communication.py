@@ -23,6 +23,8 @@ class Communication:
         if self.methodHandle != None:
             self.methodHandle.loadConfig(config)
             self.methodHandle.init(self.coreHandle)
+        else:
+            self.coreHandle.writeLog("Communication system not available (no valid communication methods)")
 
     def write(self, messagePayload):
         if self.methodHandle != None:
