@@ -20,19 +20,22 @@ class Communication:
         Communication.method = config['method']
         if Communication.method == 'radio':
             self.methodHandle = Radio()
-        self.methodHandle.loadConfig(config)
-        self.methodHandle.init(self.coreHandle)
+        if self.methodHandle != None:
+            self.methodHandle.loadConfig(config)
+            self.methodHandle.init(self.coreHandle)
 
     def write(self, messagePayload):
-        Event.callEvents('out-communication-payload', {"payload": message})
-        message = self.startLine + Communication.encryptString(message) + self.endLine
-        self.methodHandle.write(array.array('B', json.dumps(message)))
+        if self.methodHandle != None:
+            Event.callEvents('out-communication-payload', {"payload": message})
+            message = self.startLine + Communication.encryptString(message) + self.endLine
+            self.methodHandle.write(array.array('B', json.dumps(message)))
 
     def read(self):
-        data = self.methodHandle.read()
-        if data != None:
-            Event.callEvents('in-communication-payload', {"payload": payload})
-            return data
+        if self.methodHandle != None:
+            data = self.methodHandle.read()
+            if data != None:
+                Event.callEvents('in-communication-payload', {"payload": payload})
+                return data
 
     def encryptString(message):
         return cryptocode.encrypt(message, Communication.encryptPassword)
@@ -41,4 +44,5 @@ class Communication:
         return cryptocode.decrypt(message, Communication.encryptPassword)
 
     def close(self):
-        self.methodHandle.close()
+        if self.methodHandle != None:
+            self.methodHandle.close()
