@@ -64,6 +64,7 @@ class Core:
         self.communication.loadConfig(config['communication'])
         self.motorSystem.loadConfig(config['motors'])
         self.servoSystem.loadConfig(config['servos'])
+        self.cameraSystem.loadConfig(config['camera'])
 
     def writeLog(self, message):
         print(datetime.now(), message)
@@ -76,3 +77,4 @@ class Core:
             self.timingSystem.handle()
 
         self.communication.close()
+        self.cameraSystem.close()

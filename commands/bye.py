@@ -5,3 +5,4 @@ class Bye:
             if Command.myHostKey == payload.hostKey:
                 Command.myHostKey = None
                 parent.flightStatus = False
+                parent.cameraSystem.stopRecording()
