@@ -24,7 +24,6 @@ class Navigation:
         Navigation.navigationHandle.level(parent)
 
     def handle():
-        # @TODO: Load altitude
         if Navigation.coreHandle.flightStatus == True:
             Navigation.moveToTarget(Navigation.coreHandle)
             Navigation.alignToTarget(Navigation.coreHandle)
