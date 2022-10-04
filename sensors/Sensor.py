@@ -23,6 +23,12 @@ class Sensor(object):
     def handle(self):
         Sensor.parentHandle.writeLog("Sensor handle not overwritten. Sensor type: ", self.type)
 
+    def getSensorHandleByType(type):
+        for sensor in Sensor.sensors:
+            if sensor.sensorType == type:
+                return type
+        return None
+
     def addSensor(pinData, sensorType):
         sensorHandle = None
         if sensorType == "SENS_COMPASS":

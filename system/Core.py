@@ -10,6 +10,7 @@ from system.Motor import Motor
 from system.Servo import Servo
 from system.Time import Time
 from system.Health import Health
+from system.Altitude import Altitude
 # from system.NeuralNetwork import NeuralNetwork
 
 class Core:
@@ -25,6 +26,7 @@ class Core:
     timingSystem = None
     healthSystem = None
     neuralNetwork = None
+    altitudeSystem = None
 
     def init(self):
         self.writeLog(" --- Initializing Drofra framework ---")
@@ -35,13 +37,15 @@ class Core:
         self.servoSystem = Servo()
         self.timingSystem = Time()
         self.healthSystem = Health()
+        self.altitudeSystem = Altitude()
         # self.neuralNetwork = NeuralNetwork()
+        self.loadConfig()
         self.pinSystem.init()
         self.communication.init(self)
         self.motorSystem.init(self)
-        self.loadConfig()
         self.timingSystem.init(self)
         self.healthSystem.init(self)
+        self.altitudeSystem.init(self)
         Navigation.init(self)
         # self.neuralNetwork.init(self)
         Sensor.initSensorSystem()
@@ -65,6 +69,7 @@ class Core:
         self.motorSystem.loadConfig(config['motors'])
         self.servoSystem.loadConfig(config['servos'])
         self.cameraSystem.loadConfig(config['camera'])
+        self.altitudeSystem.loadConfig(config['general'])
 
     def writeLog(self, message):
         print(datetime.now(), message)
