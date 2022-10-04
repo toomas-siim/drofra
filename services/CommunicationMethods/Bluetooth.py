@@ -1,4 +1,5 @@
-import bluetooth
+import bluetoothscan
+from bluetooth.ble import DiscoveryService
 
 class Bluetooth:
     serverSock = None
@@ -7,6 +8,11 @@ class Bluetooth:
     currentLine = ""
 
     def init(self):
+        service = DiscoveryService()
+        devices = service.discover(2)
+        for address, name in devices.items():
+            print("Bluetooth> name: {}, address: {}\n".format(name, address))
+
         self.serverSock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
         port = 1
         server_sock.bind(("",port))
