@@ -1,5 +1,4 @@
-import bluetoothscan
-from bluetooth.ble import DiscoveryService
+import bluetooth
 
 class Bluetooth:
     serverSock = None
