@@ -1,6 +1,7 @@
 import cryptocode
 import array
 from services.CommunicationMethods.Radio import Radio
+from services.CommunicationMethods.Bluetooth import Bluetooth
 
 class Communication:
     encryptPassword = None
@@ -20,6 +21,8 @@ class Communication:
         Communication.method = config['method']
         if Communication.method == 'radio':
             self.methodHandle = Radio()
+        elif Communication.method == 'bluetooth':
+            self.methodHandle = Bluetooth()
         if self.methodHandle != None:
             self.methodHandle.loadConfig(config)
             self.methodHandle.init(self.coreHandle)
