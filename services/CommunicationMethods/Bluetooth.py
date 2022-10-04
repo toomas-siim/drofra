@@ -2,12 +2,14 @@ import bluetooth
 from bluetooth.ble import DiscoveryService
 
 class Bluetooth:
+    coreHandle = None
     serverSock = None
     startLine = "<start>"
     endLine = "<end>"
     currentLine = ""
 
-    def init(self):
+    def init(self, coreHandle):
+        self.coreHandle = coreHandle
         service = DiscoveryService()
         devices = service.discover(2)
         for address, name in devices.items():
