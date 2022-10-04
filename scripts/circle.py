@@ -25,7 +25,7 @@ class Circle:
 
     def handle(self):
         if self.circlePoint == None:
-            self.circlePoint = GPS.getPositionData()
+            self.circlePoint = Navigation.position
             if self.circlePoint != None:
                 self.calcRotationPoints()
                 self.currentPoint = 0
