@@ -29,4 +29,4 @@ class Script:
             my_instance.init(coreHandle)
         except:
             coreHandle.writeLog("Unable to start script: " + basename(scriptPath).split(".")[0])
-        Script.scripts.push(my_instance)
+        Script.scripts.append(my_instance)
