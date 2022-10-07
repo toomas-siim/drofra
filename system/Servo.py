@@ -1,3 +1,5 @@
+import RPi.GPIO as GPIO
+
 class Servo:
     servos = []
     parentHandle = None
