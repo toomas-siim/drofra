@@ -55,7 +55,7 @@ class Core:
         self.navigationSystem.init(self)
         self.sensorSystem.initSensorSystem(self)
         # self.neuralNetwork.init(self)
-        Script.importAllScripts()
+        Script.importAllScripts(self)
 
     def initTimedFunctions(self):
         self.timingSystem.addTimedFunction(1000, Command.handle)
