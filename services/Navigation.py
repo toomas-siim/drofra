@@ -18,41 +18,41 @@ class Navigation:
     speed = 0 # expected in km/h
     speedTracker = {"lastCheck": 0, "lastPos": {"lat": 0, "lon": 0}}
 
-    def init(parent):
-        Navigation.coreHandle = parent
+    def init(self, parent):
+        self.coreHandle = parent
         if parent.droneType == "quadcopter":
-            Navigation.navigationHandle = QuadcopterNavigation()
+            self.navigationHandle = QuadcopterNavigation()
         elif parent.droneType == "plane":
-            Navigation.navigationHandle = PlaneNavigation()
-        Navigation.navigationHandle.level(parent)
+            self.navigationHandle = PlaneNavigation()
+        self.navigationHandle.level(parent)
 
-    def handle():
-        if Navigation.coreHandle.flightStatus == True:
-            Navigation.moveToTarget(Navigation.coreHandle)
-            Navigation.alignToTarget(Navigation.coreHandle)
-            Navigation.navigationHandle.heightRegulation(Navigation.coreHandle)
-            Navigation.navigationHandle.rotationRegulation(Navigation.coreHandle)
-            Navigation.updateSpeedData(Navigation.coreHandle)
+    def handle(self):
+        if self.coreHandle.flightStatus == True:
+            self.moveToTarget(self.coreHandle)
+            self.alignToTarget(self.coreHandle)
+            self.navigationHandle.heightRegulation(self.coreHandle)
+            self.navigationHandle.rotationRegulation(self.coreHandle)
+            self.updateSpeedData(self.coreHandle)
         else:
-            Navigation.navigationHandle.stop()
+            self.navigationHandle.stop()
 
-    def moveToTarget(parent):
-        distance = Navigation.distanceFrom(Navigation.targetPosition.lat, Navigation.targetPosition.lon) * 1000 # in meters
+    def moveToTarget(self, parent):
+        distance = self.distanceFrom(self.targetPosition.lat, self.targetPosition.lon) * 1000 # in meters
         if distance > 1 or distance < -1:
-            Navigation.navigationHandle.moveForward()
+            self.navigationHandle.moveForward()
 
-    def alignToTarget(parent):
-        targetDirection = Navigation.calculateTargetDirection()
-        myDirection = Navigation.compassDirection
+    def alignToTarget(self, parent):
+        targetDirection = self.calculateTargetDirection()
+        myDirection = self.compassDirection
 
         if targetDirection - 5 > myDirection:
-            Navigation.navigationHandle.rotateLeft(parent)
+            self.navigationHandle.rotateLeft(parent)
         elif targetDirection + 5 < myDirection:
-            Navigation.navigationHandle.rotateRight(parent)
+            self.navigationHandle.rotateRight(parent)
 
-    def calculateTargetDirection():
-        latDifference = Navigation.position.lat - Navigation.targetPosition.lat
-        lonDifference = Navigation.position.lon - Navigation.targetPosition.lon
+    def calculateTargetDirection(self):
+        latDifference = self.position.lat - self.targetPosition.lat
+        lonDifference = self.position.lon - self.targetPosition.lon
         direction = 0
 
         if latDifference < 0:
@@ -74,18 +74,18 @@ class Navigation:
 
     def updateSpeedData(parent):
         speedCheckInterval = 3 # update every 3 sec
-        if time.time() - Navigation.speedTracker.lastCheck > speedCheckInterval:
-            distanceTraveled = Navigation.distanceFrom(Navigation.speedTracker.lastPos.lat, Navigation.speedTracker.lastPos.lon)
+        if time.time() - self.speedTracker.lastCheck > speedCheckInterval:
+            distanceTraveled = self.distanceFrom(self.speedTracker.lastPos.lat, self.speedTracker.lastPos.lon)
             distancePerHour = (distanceTraveled / speedCheckInterval) * 60 * 60
-            Navigation.speed = round(distancePerHour, 2)
+            self.speed = round(distancePerHour, 2)
 
             # Update data
-            Navigation.speedTracker.lastCheck = time.time()
-            Navigation.speedTracker.lastPos = Navigation.position
+            self.speedTracker.lastCheck = time.time()
+            self.speedTracker.lastPos = self.position
 
     def distanceFrom(targetLat, targetLon):
         # convert decimal degrees to radians
-        lon1, lat1, lon2, lat2 = map(radians, [Navigation.position.lon, Navigation.position.lat, targetLon, targetLat])
+        lon1, lat1, lon2, lat2 = map(radians, [self.position.lon, self.position.lat, targetLon, targetLat])
 
         # haversine formula
         dlon = lon2 - lon1

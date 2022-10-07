@@ -1,5 +1,3 @@
-from services.Navigation import Navigation
-
 class QuadcopterNavigation:
     def launch(self, parent):
         parent.motorSystem.setValueByType(Motor.TYPE_RIGHT_FRONT, Motor.SPEED_HIGH)
@@ -8,11 +6,11 @@ class QuadcopterNavigation:
         parent.motorSystem.setValueByType(Motor.TYPE_LEFT_FRONT, Motor.SPEED_HIGH)
 
     def stop(self):
-        Navigation.coreHandle.motorSystem.setAllMotors(0)
+        parent.coreHandle.motorSystem.setAllMotors(0)
 
     def moveForward(self, parent):
-        Navigation.targetRotation.x = 0
-        Navigation.targetRotation.y = -45
+        parent.targetRotation.x = 0
+        parent.targetRotation.y = -45
 
     def rotateRight(self, parent):
         parent.motorSystem.setValueByType(Motor.TYPE_RIGHT_FRONT, Motor.SPEED_HIGH)
@@ -27,10 +25,10 @@ class QuadcopterNavigation:
         parent.motorSystem.setValueByType(Motor.TYPE_LEFT_FRONT, Motor.SPEED_HIGH)
 
     def heightRegulation(self, parent):
-        if Navigation.currentHeight < Navigation.targetHeight - 3:
+        if parent.currentHeight < parent.targetHeight - 3:
             parent.motorSystem.setFrontMotors(Motor.SPEED_HIGH)
             parent.motorSystem.setBackMotors(Motor.SPEED_HIGH)
-        elif Navigation.currentHeight > Navigation.targetHeight + 3:
+        elif parent.currentHeight > parent.targetHeight + 3:
             parent.motorSystem.setFrontMotors(Motor.SPEED_LOW)
             parent.motorSystem.setBackMotors(Motor.SPEED_LOW)
 
@@ -39,8 +37,8 @@ class QuadcopterNavigation:
         # @TODO: Should use a spectrum of motor power instead of fixed values.
         # Ie moving forward needs a stable balanced speed of rotors, not jumps between high and low.
         motorBaseValue = Motor.SPEED_MID
-        differenceX = Navigation.rotation.x - Navigation.targetRotation.x
-        differenceY = Navigation.rotation.y - Navigation.targetRotation.y
+        differenceX = parent.rotation.x - parent.targetRotation.x
+        differenceY = parent.rotation.y - parent.targetRotation.y
         differenceMultiplier = 2 # Multiplies difference of degrees to motor power required to corrigate
         # Ignore regulation if less than 3 degree difference
         if differenceX > -3 and differenceX < 3 and differenceY > -3 and differenceY < 3:
@@ -84,5 +82,5 @@ class QuadcopterNavigation:
         parent.motorSystem.setValueByType(Motor.TYPE_LEFT_FRONT, motorLeftFront)
 
     def level(self, parent):
-        Navigation.targetRotation.x = 0
-        Navigation.targetRotation.y = 0
+        parent.targetRotation.x = 0
+        parent.targetRotation.y = 0
