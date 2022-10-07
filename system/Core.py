@@ -11,6 +11,7 @@ from system.Servo import Servo
 from system.Time import Time
 from system.Health import Health
 from system.Altitude import Altitude
+from services.Navigation import Navigation
 # from system.NeuralNetwork import NeuralNetwork
 
 class Core:
