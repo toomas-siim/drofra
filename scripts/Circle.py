@@ -9,6 +9,7 @@ class Circle:
 
     def init(self, coreHandle):
         self.coreHandle = coreHandle
+        coreHandle.writeLog("Circle script initiated.")
         Event.addListener("in-communication-payload", self.gpsChange)
 
     def gpsChange(self, eventData):
