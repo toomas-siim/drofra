@@ -28,6 +28,7 @@ class Circle:
         self.rotationPoints.append({ lat: circlePoint.lat - latLength, lon: circlePoint.lat + lonLength })
 
     def handle(self):
+        self.coreHandle.writeLog("Handling circle script")
         if self.circlePoint == None:
             self.circlePoint = Navigation.position
             if self.circlePoint != None:
