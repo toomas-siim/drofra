@@ -10,7 +10,6 @@ class Script:
         self.coreHandle = coreHandle
 
     def handleScripts():
-        print(Script.scripts)
         for script in Script.scripts:
             script.handle()
 
