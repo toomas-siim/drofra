@@ -21,7 +21,7 @@ class Bluetooth:
         self.handleIncoming()
 
     def loadConfig(self, config):
-
+        # @TODO
 
     def lookUpNearbyBluetoothDevices(self):
       return bluetooth.discover_devices()
