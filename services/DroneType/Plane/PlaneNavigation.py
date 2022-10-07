@@ -69,5 +69,5 @@ class PlaneNavigation:
         return False
 
     def level(self, parent):
-        parent.navigationSystem.targetRotation.x = 0
-        parent.navigationSystem.targetRotation.y = 0
+        parent.navigationSystem.targetRotation["x"] = 0
+        parent.navigationSystem.targetRotation["y"] = 0
