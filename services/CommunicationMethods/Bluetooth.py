@@ -20,6 +20,9 @@ class Bluetooth:
     def handle(self):
         self.handleIncoming()
 
+    def loadConfig(self, config):
+
+
     def lookUpNearbyBluetoothDevices(self):
       return bluetooth.discover_devices()
 
