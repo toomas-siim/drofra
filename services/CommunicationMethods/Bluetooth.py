@@ -1,5 +1,4 @@
 import bluetooth
-from bluetooth.ble import DiscoveryService
 
 class Bluetooth:
     coreHandle = None
@@ -10,18 +9,20 @@ class Bluetooth:
 
     def init(self, coreHandle):
         self.coreHandle = coreHandle
-        service = DiscoveryService()
-        devices = service.discover(2)
-        for address, name in devices.items():
-            print("Bluetooth> name: {}, address: {}\n".format(name, address))
+        devices = self.lookUpNearbyBluetoothDevices()
+        for device in devices:
+            print("Bluetooth> name: {}, address: {}\n".format(bluetooth.lookup_name(device), str(device))
 
         self.serverSock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
         port = 1
-        server_sock.bind(("",port))
-        server_sock.listen(1)
+        self.serverSock.bind(("",port))
+        self.serverSock.listen(1)
 
     def handle(self):
         self.handleIncoming()
+
+    def lookUpNearbyBluetoothDevices(self):
+      return bluetooth.discover_devices()
 
     def handleIncoming(self):
         client_sock,address = server_sock.accept()
