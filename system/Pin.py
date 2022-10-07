@@ -6,6 +6,7 @@ class Pin:
 
     def setPinType(self, pin, type):
         GPIO.setup(int(pin), type)
+        GPIO.setmode(GPIO.BOARD)
 
     def setPinOutput(self, pin, output):
         # @TODO: Validate min / max values
