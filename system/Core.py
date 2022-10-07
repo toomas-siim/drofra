@@ -46,7 +46,7 @@ class Core:
         self.communication.init(self)
         self.timingSystem.init(self)
         self.healthSystem.init(self)
-        self.altitudeSystem.init(self)
+        self.altitudeSystem.init()
         Navigation.init(self)
         # self.neuralNetwork.init(self)
         Sensor.initSensorSystem()
