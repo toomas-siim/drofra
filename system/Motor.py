@@ -74,4 +74,4 @@ class Motor:
 
     def addMotor(self, type, pin):
         self.parentHandle.pinSystem.setPinType(pin, GPIO.OUT)
-        motors.append({"type": type, "pin": pin})
+        self.motors.append({"type": type, "pin": pin})
