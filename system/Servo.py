@@ -19,5 +19,5 @@ class Servo:
             if 'servo-' in configKey:
                 pins = config[configKey].split(",")
                 for pin in pins:
-                    servoData = servo.split(":")
+                    servoData = pin.split(":")
                     self.addServo(servoData[0], servoData[1], servoData[2])
