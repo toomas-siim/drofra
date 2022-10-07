@@ -1,11 +1,8 @@
-class Circle():
+class Circle(Object):
     coreHandle = None
     circlePoint = None
     rotationPoints = []
     currentPoint = 0
-
-    def __init__():
-        print("Circle script intializing.")
 
     def init(self, coreHandle):
         self.coreHandle = coreHandle
