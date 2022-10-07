@@ -25,5 +25,8 @@ class Script:
         module = importlib.import_module("scripts." + basename(scriptPath).split(".")[0])
         my_class = getattr(module, basename(scriptPath).split(".")[0])
         my_instance = my_class()
-        my_instance.init(coreHandle)
+        try:
+            my_instance.init(coreHandle)
+        except:
+            coreHandle.writeLog("Unable to start script: " + basename(scriptPath).split(".")[0])
         Script.scripts.push(my_instance)
