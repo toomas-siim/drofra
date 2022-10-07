@@ -1,3 +1,5 @@
+from services.Navigation import Navigation
+
 class PlaneNavigation:
     def launch(self, parent):
         parent.motorSystem.setForwardMotors(Motor.SPEED_HIGH)
