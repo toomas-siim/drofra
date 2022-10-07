@@ -1,8 +1,8 @@
 from time import time
 from math import radians, cos, sin, asin, sqrt
 
-from services.DroneType.Plane import Plane
-from services.DroneType.Quadcopter import Quadcopter
+from services.DroneType.Plane.PlaneNavigation import PlaneNavigation
+from services.DroneType.Quadcopter.QuadcopterNavigation import QuadcopterNavigation
 
 class Navigation:
     navigationHandle = None
@@ -21,9 +21,9 @@ class Navigation:
     def init(parent):
         Navigation.coreHandle = parent
         if parent.droneType == "quadcopter":
-            Navigation.navigationHandle = Quadcopter.QuadcopterNavigation()
+            Navigation.navigationHandle = QuadcopterNavigation()
         elif parent.droneType == "plane":
-            Navigation.navigationHandle = Plane.PlaneNavigation()
+            Navigation.navigationHandle = PlaneNavigation()
         Navigation.navigationHandle.level(parent)
 
     def handle():
