@@ -1,6 +1,9 @@
 from time import time
 from math import radians, cos, sin, asin, sqrt
 
+from services.DroneType.Plane.PlaneNavigation import PlaneNavigation
+from services.DroneType.Quadcopter.QuadcopterNavigation import QuadcopterNavigation
+
 class Navigation:
     navigationHandle = None
     coreHandle = None
