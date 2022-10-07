@@ -1,3 +1,5 @@
+from services.Navigation import Navigation
+
 class QuadcopterNavigation:
     def launch(self, parent):
         parent.motorSystem.setValueByType(Motor.TYPE_RIGHT_FRONT, Motor.SPEED_HIGH)
