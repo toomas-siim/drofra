@@ -21,7 +21,10 @@ class Bluetooth:
             print("Failed initializing bluetooth.")
 
     def handle(self):
-        self.handleIncoming()
+        try:
+            self.handleIncoming()
+        except BaseException as err:
+            self.coreHandle.writeLog("Error handling bluetooth: " + str(err))
 
     def loadConfig(self, config):
         # @TODO
