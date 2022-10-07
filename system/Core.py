@@ -41,6 +41,7 @@ class Core:
         # self.neuralNetwork = NeuralNetwork()
         self.pinSystem.init()
         self.motorSystem.init(self)
+        self.servoSystem.init(self)
         self.loadConfig()
         self.communication.init(self)
         self.timingSystem.init(self)
