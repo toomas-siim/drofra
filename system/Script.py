@@ -29,5 +29,5 @@ class Script:
             my_instance.init(coreHandle)
         except BaseException as err:
             coreHandle.writeLog("Unable to start script: " + basename(scriptPath).split(".")[0])
-            coreHandle.writeLog("Failure message: " + err)
+            coreHandle.writeLog("Failure message: " + str(err))
         Script.scripts.append(my_instance)
