@@ -10,26 +10,26 @@ class Sensor(object):
         self.type = type
         self.name = type
 
-    def initSensorSystem(coreHandle):
-        Sensor.parentHandle = coreHandle
+    def initSensorSystem(self, coreHandle):
+        self.parentHandle = coreHandle
 
     def init(self):
-        Sensor.parentHandle.writeLog("Sensor init not overwritten. Sensor type: ", self.type)
+        self.parentHandle.writeLog("Sensor init not overwritten. Sensor type: ", self.type)
 
     def handleSensors():
         for sensorData in Sensor.sensors:
             sensorData.handle.handle()
 
     def handle(self):
-        Sensor.parentHandle.writeLog("Sensor handle not overwritten. Sensor type: ", self.type)
+        self.parentHandle.writeLog("Sensor handle not overwritten. Sensor type: ", self.type)
 
-    def getSensorHandleByType(type):
-        for sensor in Sensor.sensors:
+    def getSensorHandleByType(self, type):
+        for sensor in self.sensors:
             if sensor.sensorType == type:
                 return type
         return None
 
-    def addSensor(pinData, sensorType):
+    def addSensor(self, pinData, sensorType):
         sensorHandle = None
         if sensorType == "SENS_COMPASS":
             sensorHandle = Compass()
@@ -46,12 +46,12 @@ class Sensor(object):
 
         if sensorHandle != None:
             sensorHandle.init()
-            Sensor.sensors.push({pinData: pinData, sensorType: sensorType, handle: sensorHandle})
-            Sensor.parentHandle.writeLog("Registered new sensor: ", sensorType)
+            self.sensors.push({pinData: pinData, sensorType: sensorType, handle: sensorHandle})
+            self.parentHandle.writeLog("Registered new sensor: ", sensorType)
         else:
-            Sensor.parentHandle.writeLog("Failed to register new sensor: ", sensorType)
+            self.parentHandle.writeLog("Failed to register new sensor: ", sensorType)
 
-    def loadConfig(config):
+    def loadConfig(self, config):
         for configData in config:
             configData = configData.split(',')
             sensorData = []
@@ -62,4 +62,4 @@ class Sensor(object):
                     sensorType = pinData[2]
                 sensorData.push({pin: pinData[0], pinType: pinData[1]})
             if sensorType not None:
-                Sensor.addSensor(sensorData, sensorType)
+                self.addSensor(sensorData, sensorType)

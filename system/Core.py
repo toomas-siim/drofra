@@ -12,6 +12,7 @@ from system.Time import Time
 from system.Health import Health
 from system.Altitude import Altitude
 from services.Navigation import Navigation
+from sensors.Sensor import Sensor
 # from system.NeuralNetwork import NeuralNetwork
 
 class Core:
@@ -40,6 +41,7 @@ class Core:
         self.healthSystem = Health()
         self.altitudeSystem = Altitude()
         self.navigationSystem = Navigation()
+        self.sensorSystem = Sensor()
         # self.neuralNetwork = NeuralNetwork()
         self.pinSystem.init()
         self.motorSystem.init(self)
@@ -50,8 +52,8 @@ class Core:
         self.healthSystem.init(self)
         self.altitudeSystem.init()
         self.navigationSystem.init(self)
+        self.sensorSystem.initSensorSystem(self)
         # self.neuralNetwork.init(self)
-        Sensor.initSensorSystem()
         Script.importAllScripts()
 
     def initTimedFunctions(self):
