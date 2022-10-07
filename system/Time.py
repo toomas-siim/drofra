@@ -17,8 +17,8 @@ class Time:
         return time.time() - self.startTime
 
     def handle(self):
+        print(self.timedFunctions)
         for timedFunction in self.timedFunctions:
             if (time.time() * 1000) - timedFunction.lastTrigger > timedFunction.intervalMs:
                 timedFunction.lastTrigger = time.time() * 1000
-                print("Trigger")
                 timedFunction.trigger(self.coreHandle)
