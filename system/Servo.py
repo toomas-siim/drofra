@@ -17,8 +17,7 @@ class Servo:
     def loadConfig(self, config):
         for configKey in config.keys():
             if 'servo-' in configKey:
-                for servo in config[configKey]:
-                    pins = servo.split(",")
-                    for pin in pins:
-                        servoData = servo.split(":")
-                        self.addServo(servoData[0], servoData[1], servoData[2])
+                pins = config[configKey].split(",")
+                for pin in pins:
+                    servoData = servo.split(":")
+                    self.addServo(servoData[0], servoData[1], servoData[2])
