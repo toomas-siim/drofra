@@ -9,13 +9,16 @@ class Bluetooth:
 
     def init(self, coreHandle):
         self.coreHandle = coreHandle
-        devices = self.lookUpNearbyBluetoothDevices()
-        for device in devices:
-            print("Bluetooth> name: {}, address: {}\n".format(bluetooth.lookup_name(device), str(device)))
-        self.serverSock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-        port = 1
-        self.serverSock.bind(("",port))
-        self.serverSock.listen(1)
+        try:
+            devices = self.lookUpNearbyBluetoothDevices()
+            for device in devices:
+                print("Bluetooth> name: {}, address: {}\n".format(bluetooth.lookup_name(device), str(device)))
+            self.serverSock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+            port = 1
+            self.serverSock.bind(("",port))
+            self.serverSock.listen(1)
+        except:
+            print("Failed initializing bluetooth.")
 
     def handle(self):
         self.handleIncoming()
