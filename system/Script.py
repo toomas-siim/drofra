@@ -21,7 +21,7 @@ class Script:
         return [f for f in listdir(folder) if isfile(join(folder, f))]
 
     def loadScript(scriptPath, coreHandle):
-        scriptNamespace = "scripts." + basename(scriptPath)
+        scriptNamespace = "scripts." + basename(scriptPath).split(".")[0]
         module = __import__(scriptNamespace)
         class_ = getattr(module, basename(scriptPath))
         instance = class_()
