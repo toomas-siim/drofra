@@ -21,11 +21,11 @@ class Sensor:
             sensorHandle = Compass()
         elif sensorTyoe == "SENS_ULTRASONIC":
             sensorHandle = Ultrasonic()
-        elif sensorType == "SENS_GYRO"
+        elif sensorType == "SENS_GYRO":
             sensorHandle = Gyro()
         elif sensorType == "SENS_GPS":
             sensorHandle = GPS()
-        elif sensorType == "SENS_ATMOS"
+        elif sensorType == "SENS_ATMOS":
             sensorHandle = AtmosPressure()
         elif sensorType == "SENS_ACCELERO":
             sensorHandle = Accelerometer()
