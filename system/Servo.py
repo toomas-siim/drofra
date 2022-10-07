@@ -10,9 +10,9 @@ class Servo:
             if servo.type == type:
                 self.parentHandle.pinSystem.setPinOutput(servo.pin, servo.centerPos + value)
 
-    def addServo(pin, type, centerPos):
+    def addServo(self, pin, type, centerPos):
         self.parentHandle.pinSystem.setPinType(pin, GPIO.OUT)
-        servos.append({"type": type, "pin": pin, "centerPos": centerPos})
+        self.servos.append({"type": type, "pin": pin, "centerPos": centerPos})
 
     def loadConfig(self, config):
         for configKey in config.keys():
