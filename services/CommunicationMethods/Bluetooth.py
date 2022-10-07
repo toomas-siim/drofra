@@ -31,7 +31,7 @@ class Bluetooth:
       return bluetooth.discover_devices()
 
     def handleIncoming(self):
-        client_sock,address = server_sock.accept()
+        client_sock,address = self.serverSock.accept()
         data = client_sock.recv(1024)
         self.currentLine += data
 
