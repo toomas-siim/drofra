@@ -1,12 +1,15 @@
 class QuadcopterNavigation:
+    coreHandle = None
+
     def launch(self, parent):
+        self.coreHandle = parent
         parent.motorSystem.setValueByType(Motor.TYPE_RIGHT_FRONT, Motor.SPEED_HIGH)
         parent.motorSystem.setValueByType(Motor.TYPE_LEFT_BACK, Motor.SPEED_HIGH)
         parent.motorSystem.setValueByType(Motor.TYPE_RIGHT_BACK, Motor.SPEED_HIGH)
         parent.motorSystem.setValueByType(Motor.TYPE_LEFT_FRONT, Motor.SPEED_HIGH)
 
     def stop(self):
-        parent.coreHandle.motorSystem.setAllMotors(0)
+        self.coreHandle.motorSystem.setAllMotors(0)
 
     def moveForward(self, parent):
         parent.targetRotation.x = 0
