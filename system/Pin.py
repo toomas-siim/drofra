@@ -5,7 +5,6 @@ class Pin:
         GPIO.setmode(GPIO.BOARD)
 
     def setPinType(self, pin, type):
-        print(int(pin))
         GPIO.setup(int(pin), type)
 
     def setPinOutput(self, pin, output):

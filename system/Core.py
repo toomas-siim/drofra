@@ -67,10 +67,14 @@ class Core:
         config.read('drone.ini')
         config.sections()
         self.droneType = config['general']['type'].lower()
-        self.communication.loadConfig(config['communication'])
-        self.motorSystem.loadConfig(config['motors'])
-        self.servoSystem.loadConfig(config['servos'])
-        self.cameraSystem.loadConfig(config['camera'])
+        if 'communication' in config:
+            self.communication.loadConfig(config['communication'])
+        if 'motors' in config:
+            self.motorSystem.loadConfig(config['motors'])
+        if 'servos' in config:
+            self.servoSystem.loadConfig(config['servos'])
+        if 'camera' in config:
+            self.cameraSystem.loadConfig(config['camera'])
         self.altitudeSystem.loadConfig(config['general'])
 
     def writeLog(self, message):
