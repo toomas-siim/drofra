@@ -9,7 +9,7 @@ class Time:
         self.coreHandle = coreHandle
 
     def addTimedFunction(self, intervalMs, callback):
-        self.timedFunctions.push({"lastTrigger": (time.time() * 1000), "intervalMs": intervalMs, "trigger": callback})
+        self.timedFunctions.append({"lastTrigger": (time.time() * 1000), "intervalMs": intervalMs, "trigger": callback})
 
     def getRunTime(self):
         if self.startTime == None:

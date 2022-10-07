@@ -32,7 +32,7 @@ class Sensor:
 
         if sensorHandle != None:
             sensorHandle.init()
-            self.sensors.push({pinData: pinData, sensorType: sensorType, handle: sensorHandle})
+            self.sensors.append({pinData: pinData, sensorType: sensorType, handle: sensorHandle})
             self.parentHandle.writeLog("Registered new sensor: ", sensorType)
         else:
             self.parentHandle.writeLog("Failed to register new sensor: ", sensorType)
@@ -46,6 +46,6 @@ class Sensor:
                 pinData = pinData.split(':')
                 if sensorType == None:
                     sensorType = pinData[2]
-                sensorData.push({pin: pinData[0], pinType: pinData[1]})
+                sensorData.append({pin: pinData[0], pinType: pinData[1]})
             if sensorType != None:
                 self.addSensor(sensorData, sensorType)
