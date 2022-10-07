@@ -13,7 +13,7 @@ class Script:
             script.handle()
 
     def importAllScripts(coreHandle):
-        scripts = getScriptsFromFolder("../scripts/")
+        scripts = Script.getScriptsFromFolder("../scripts/")
         for script in scripts:
             Script.loadScript(script, coreHandle)
 
