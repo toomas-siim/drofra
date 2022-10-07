@@ -1,4 +1,4 @@
-class Circle(Object):
+class Circle:
     coreHandle = None
     circlePoint = None
     rotationPoints = []
