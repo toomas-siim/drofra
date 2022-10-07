@@ -12,6 +12,7 @@ from system.Time import Time
 from system.Health import Health
 from system.Altitude import Altitude
 from services.Navigation import Navigation
+from services.Command import Command
 from system.Sensor import Sensor
 from system.Script import Script
 # from system.NeuralNetwork import NeuralNetwork
