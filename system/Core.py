@@ -56,6 +56,7 @@ class Core:
         self.sensorSystem.initSensorSystem(self)
         # self.neuralNetwork.init(self)
         Script.importAllScripts(self)
+        self.initTimedFunctions()
 
     def initTimedFunctions(self):
         self.timingSystem.addTimedFunction(1000, Command.handle)
