@@ -1,5 +1,5 @@
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, basename
 
 class Script:
     coreHandle = None
@@ -21,8 +21,8 @@ class Script:
         return [f for f in listdir(folder) if isfile(join(folder, f))]
 
     def loadScript(scriptPath, coreHandle):
-        module = __import__(module_name)
-        class_ = getattr(module, class_name)
+        module = __import__(basename(scriptPath))
+        class_ = getattr(module, basename(scriptPath))
         instance = class_()
         instance.init(coreHandle)
         Script.scripts.push(instance)
