@@ -3,7 +3,7 @@ class Altitude:
     sensorHandle = None
 
     def init(self):
-        if self.method == "ultrasonic"
+        if self.method == "ultrasonic":
             self.sensorHandle = Sensor.getSensorByType("SENS_ULTRASONIC")
 
     def loadConfig(self, config):
