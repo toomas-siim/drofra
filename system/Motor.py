@@ -73,11 +73,11 @@ class Motor:
                     self.addMotor(self.TYPE_RIGHT_BACK, pin)
         if 'motor-front-pins' in config:
             for motor in config['motor-front-pins']:
+                print(motor)
                 pins = motor.split(",")
                 for pin in pins:
                     self.addMotor(self.TYPE_FRONT, pin)
 
     def addMotor(self, type, pin):
-        print(pin)
         self.parentHandle.pinSystem.setPinType(pin, GPIO.OUT)
         motors.append({"type": type, "pin": pin})
