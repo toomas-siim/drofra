@@ -13,6 +13,12 @@ class Communication:
         self.coreHandle = coreHandle
         coreHandle.writeLog("Initializing communication system.")
 
+        if self.methodHandle != None:
+            self.methodHandle.loadConfig(config)
+            self.methodHandle.init(self.coreHandle)
+        else:
+            self.coreHandle.writeLog("Communication system not available (no valid communication methods)")
+
     def handle(self):
         self.methodHandle.handle()
 
@@ -23,11 +29,6 @@ class Communication:
             self.methodHandle = Radio()
         elif Communication.method == 'bluetooth':
             self.methodHandle = Bluetooth()
-        if self.methodHandle != None:
-            self.methodHandle.loadConfig(config)
-            self.methodHandle.init(self.coreHandle)
-        else:
-            self.coreHandle.writeLog("Communication system not available (no valid communication methods)")
 
     def write(self, messagePayload):
         if self.methodHandle != None:
