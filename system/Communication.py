@@ -14,7 +14,6 @@ class Communication:
         coreHandle.writeLog("Initializing communication system.")
 
         if self.methodHandle != None:
-            self.methodHandle.loadConfig(config)
             self.methodHandle.init(self.coreHandle)
         else:
             self.coreHandle.writeLog("Communication system not available (no valid communication methods)")
