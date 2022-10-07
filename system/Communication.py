@@ -29,6 +29,7 @@ class Communication:
             self.methodHandle = Radio()
         elif Communication.method == 'bluetooth':
             self.methodHandle = Bluetooth()
+        self.methodHandle.loadConfig(config)
 
     def write(self, messagePayload):
         if self.methodHandle != None:
