@@ -24,6 +24,6 @@ class Script:
         scriptNamespace = "scripts." + basename(scriptPath).split(".")[0]
         module = __import__(scriptNamespace)
         class_ = getattr(module, basename(scriptPath).split(".")[0])
-        instance = class_
+        instance = class_()
         instance.init(coreHandle)
         Script.scripts.push(instance)
