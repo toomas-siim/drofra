@@ -72,8 +72,8 @@ class Motor:
                 for pin in pins:
                     self.addMotor(self.TYPE_RIGHT_BACK, pin)
         if 'motor-front-pins' in config:
+            print(config['motor-front-pins'])
             for motor in config['motor-front-pins']:
-                print(motor)
                 pins = motor.split(",")
                 for pin in pins:
                     self.addMotor(self.TYPE_FRONT, pin)
