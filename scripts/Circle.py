@@ -21,10 +21,10 @@ class Circle:
         lonLength = ((1/111.321) / 1000) * 100
         circlePoint = self.circlePoint
         self.rotationPoints = []
-        self.rotationPoints.push({ lat: circlePoint.lat - latLength, lon: circlePoint.lat - lonLength })
-        self.rotationPoints.push({ lat: circlePoint.lat + latLength, lon: circlePoint.lat - lonLength })
-        self.rotationPoints.push({ lat: circlePoint.lat + latLength, lon: circlePoint.lat + lonLength })
-        self.rotationPoints.push({ lat: circlePoint.lat - latLength, lon: circlePoint.lat + lonLength })
+        self.rotationPoints.append({ lat: circlePoint.lat - latLength, lon: circlePoint.lat - lonLength })
+        self.rotationPoints.append({ lat: circlePoint.lat + latLength, lon: circlePoint.lat - lonLength })
+        self.rotationPoints.append({ lat: circlePoint.lat + latLength, lon: circlePoint.lat + lonLength })
+        self.rotationPoints.append({ lat: circlePoint.lat - latLength, lon: circlePoint.lat + lonLength })
 
     def handle(self):
         if self.circlePoint == None:
@@ -33,10 +33,10 @@ class Circle:
                 self.calcRotationPoints()
                 self.currentPoint = 0
         if len(self.rotationPoints) > 0:
-            distance = Navigation.distanceFrom(self.rotationPoints[self.currentPoint].lat, self.rotationPoints[self.currentPoint].lon) / 1000
+            distance = self.coreHandle.navigationSystem.distanceFrom(self.rotationPoints[self.currentPoint].lat, self.rotationPoints[self.currentPoint].lon) / 1000
             if distance < 5:
                 if len(self.rotationPoints) <= self.currentPoint:
                     self.currentPoint = 0
                 else:
                     self.currentPoint += 1
-            Navigation.targetPosition = self.rotationPoints[self.currentPoint]
+            self.coreHandle.navigationSystem.targetPosition = self.rotationPoints[self.currentPoint]
