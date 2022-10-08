@@ -22,6 +22,7 @@ class Circle:
         lonLength = ((1/111.321) / 1000) * 100
         circlePoint = self.circlePoint
         if circlePoint != None:
+            print(circlePoint)
             self.rotationPoints = []
             self.rotationPoints.append({ lat: circlePoint.lat - latLength, lon: circlePoint.lat - lonLength })
             self.rotationPoints.append({ lat: circlePoint.lat + latLength, lon: circlePoint.lat - lonLength })
