@@ -23,11 +23,10 @@ class Circle:
         circlePoint = self.circlePoint
         if circlePoint != None:
             self.rotationPoints = []
-            print(circlePoint['lat'])
-            self.rotationPoints.append({ lat: circlePoint["lat"] - latLength, lon: circlePoint["lon"] - lonLength })
-            self.rotationPoints.append({ lat: circlePoint["lat"] + latLength, lon: circlePoint["lon"] - lonLength })
-            self.rotationPoints.append({ lat: circlePoint["lat"] + latLength, lon: circlePoint["lon"] + lonLength })
-            self.rotationPoints.append({ lat: circlePoint["lat"] - latLength, lon: circlePoint["lon"] + lonLength })
+            self.rotationPoints.append({ "lat": circlePoint["lat"] - latLength, "lon": circlePoint["lon"] - lonLength })
+            self.rotationPoints.append({ "lat": circlePoint["lat"] + latLength, "lon": circlePoint["lon"] - lonLength })
+            self.rotationPoints.append({ "lat": circlePoint["lat"] + latLength, "lon": circlePoint["lon"] + lonLength })
+            self.rotationPoints.append({ "lat": circlePoint["lat"] - latLength, "lon": circlePoint["lon"] + lonLength })
 
     def handle(self):
         self.coreHandle.writeLog("Handling circle script")
