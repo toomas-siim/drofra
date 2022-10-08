@@ -33,8 +33,6 @@ class Navigation:
             self.navigationHandle.heightRegulation(self.coreHandle)
             self.navigationHandle.rotationRegulation(self.coreHandle)
             self.updateSpeedData(self.coreHandle)
-        else:
-            self.navigationHandle.stop()
 
     def stop(self):
         self.navigationHandle.stop()
