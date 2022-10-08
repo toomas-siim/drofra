@@ -36,6 +36,9 @@ class Navigation:
         else:
             self.navigationHandle.stop()
 
+    def stop(self):
+        self.navigationHandle.stop()
+
     def moveToTarget(self, parent):
         distance = self.distanceFrom(self.targetPosition.lat, self.targetPosition.lon) * 1000 # in meters
         if distance > 1 or distance < -1:
