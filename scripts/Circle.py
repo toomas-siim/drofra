@@ -21,11 +21,12 @@ class Circle:
         latLength = ((1/111) / 1000) * 100
         lonLength = ((1/111.321) / 1000) * 100
         circlePoint = self.circlePoint
-        self.rotationPoints = []
-        self.rotationPoints.append({ lat: circlePoint.lat - latLength, lon: circlePoint.lat - lonLength })
-        self.rotationPoints.append({ lat: circlePoint.lat + latLength, lon: circlePoint.lat - lonLength })
-        self.rotationPoints.append({ lat: circlePoint.lat + latLength, lon: circlePoint.lat + lonLength })
-        self.rotationPoints.append({ lat: circlePoint.lat - latLength, lon: circlePoint.lat + lonLength })
+        if circlePoint != None:
+            self.rotationPoints = []
+            self.rotationPoints.append({ lat: circlePoint.lat - latLength, lon: circlePoint.lat - lonLength })
+            self.rotationPoints.append({ lat: circlePoint.lat + latLength, lon: circlePoint.lat - lonLength })
+            self.rotationPoints.append({ lat: circlePoint.lat + latLength, lon: circlePoint.lat + lonLength })
+            self.rotationPoints.append({ lat: circlePoint.lat - latLength, lon: circlePoint.lat + lonLength })
 
     def handle(self):
         self.coreHandle.writeLog("Handling circle script")
