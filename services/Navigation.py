@@ -86,7 +86,7 @@ class Navigation:
 
     def distanceFrom(self, targetLat, targetLon):
         # convert decimal degrees to radians
-        lon1, lat1, lon2, lat2 = map(radians, [self.position.lon, self.position.lat, targetLon, targetLat])
+        lon1, lat1, lon2, lat2 = map(radians, [self.position["lon"], self.position["lat"], targetLon, targetLat])
 
         # haversine formula
         dlon = lon2 - lon1
