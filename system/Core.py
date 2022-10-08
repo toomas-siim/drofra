@@ -63,7 +63,7 @@ class Core:
         self.timingSystem.addTimedFunction(1000, Command.handle)
         self.timingSystem.addTimedFunction(10, self.communication.handle)
         self.timingSystem.addTimedFunction(100, Script.handleScripts)
-        self.timingSystem.addTimedFunction(30, Navigation.handle)
+        self.timingSystem.addTimedFunction(30, self.navigationSystem.handle)
         self.timingSystem.addTimedFunction(50, Sensor.handle)
         self.timingSystem.addTimedFunction(3000, self.healthSystem.handle)
         self.timingSystem.addTimedFunction(1000, self.altitudeSystem.handle)
