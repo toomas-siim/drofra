@@ -30,7 +30,7 @@ class Circle:
     def handle(self):
         self.coreHandle.writeLog("Handling circle script")
         if self.circlePoint == None:
-            self.circlePoint = Navigation.position
+            self.circlePoint = self.coreHandle.navigationSystem.position
             if self.circlePoint != None:
                 self.calcRotationPoints()
                 self.currentPoint = 0
