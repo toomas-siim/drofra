@@ -12,4 +12,5 @@ class Altitude:
             self.method = config['altitude-method'].lower()
 
     def handle(self):
-        Navigation.currentHeight = self.sensorHandle.getDistance()
+        if self.sensorHandle != None:
+            Navigation.currentHeight = self.sensorHandle.getDistance()
