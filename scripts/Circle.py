@@ -42,5 +42,5 @@ class Circle:
                     self.currentPoint = 0
                 else:
                     self.currentPoint += 1
-            if len(self.rotationPoints) > 0:
+            if len(self.rotationPoints) > self.currentPoint:
                 self.coreHandle.navigationSystem.targetPosition = self.rotationPoints[self.currentPoint]
