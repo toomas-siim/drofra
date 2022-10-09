@@ -35,7 +35,7 @@ class Circle:
             if self.circlePoint != None:
                 self.calcRotationPoints()
                 self.currentPoint = 0
-        if len(self.rotationPoints) > self.currentPoint:
+        if len(self.rotationPoints) > self.currentPoint and self.currentPoint != None:
             distance = self.coreHandle.navigationSystem.distanceFrom(self.rotationPoints[self.currentPoint]["lat"], self.rotationPoints[self.currentPoint]["lon"]) / 1000
             if distance < 5:
                 if len(self.rotationPoints) <= self.currentPoint:
