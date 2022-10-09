@@ -9,8 +9,10 @@ class Command:
     def handle():
         comms = Command.coreHandle.communication
         payload = comms.read()
+        if payload == None:
+            return False
 
-        if payload.hostKey == Command.myHostKey or Command.myHostKey == None:
+        if Command.myHostKey == None or payload.hostKey == Command.myHostKey:
             if payload.command == "hello":
                 handle = Hello()
             elif payload.command == "bye":
