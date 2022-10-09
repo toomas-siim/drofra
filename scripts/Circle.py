@@ -35,12 +35,11 @@ class Circle:
             if self.circlePoint != None:
                 self.calcRotationPoints()
                 self.currentPoint = 0
-        if len(self.rotationPoints) > 0:
+        if len(self.rotationPoints) > self.currentPoint:
             distance = self.coreHandle.navigationSystem.distanceFrom(self.rotationPoints[self.currentPoint]["lat"], self.rotationPoints[self.currentPoint]["lon"]) / 1000
             if distance < 5:
                 if len(self.rotationPoints) <= self.currentPoint:
                     self.currentPoint = 0
                 else:
                     self.currentPoint += 1
-            if len(self.rotationPoints) > self.currentPoint:
-                self.coreHandle.navigationSystem.targetPosition = self.rotationPoints[self.currentPoint]
+            self.coreHandle.navigationSystem.targetPosition = self.rotationPoints[self.currentPoint]
