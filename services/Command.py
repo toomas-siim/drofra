@@ -7,7 +7,7 @@ class Command:
         Command.coreHandle = coreHandle
 
     def handle():
-        comms = self.coreHandle.communication
+        comms = Command.coreHandle.communication
         payload = comms.read()
 
         if payload.hostKey == Command.myHostKey or Command.myHostKey == None:
