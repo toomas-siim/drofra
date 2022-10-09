@@ -6,6 +6,7 @@ class Bluetooth:
     startLine = "<start>"
     endLine = "<end>"
     currentLine = ""
+    activeClient = None
 
     def init(self, coreHandle):
         self.coreHandle = coreHandle
@@ -33,10 +34,14 @@ class Bluetooth:
     def lookUpNearbyBluetoothDevices(self):
       return bluetooth.discover_devices()
 
+    def handlePayloads(self):
+        if self.activeClient != None:
+            data = self.activeClient.recv(1024)
+            self.currentLine += data
+
     def handleIncoming(self):
         client_sock,address = self.serverSock.accept()
-        data = client_sock.recv(1024)
-        self.currentLine += data
+        self.activeClient = {"socket": client_sock, "address": address}
 
     def read(self):
         if self.endLine in self.currentLine:
