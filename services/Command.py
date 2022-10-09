@@ -3,8 +3,11 @@ import json
 class Command:
     myHostKey = None
 
-    def handle(parent):
-        comms = parent.communication
+    def init(coreHandle):
+        Command.coreHandle = coreHandle
+
+    def handle():
+        comms = self.coreHandle.communication
         payload = comms.read()
 
         if payload.hostKey == Command.myHostKey or Command.myHostKey == None:

@@ -55,6 +55,7 @@ class Core:
         self.altitudeSystem.init(self)
         self.navigationSystem.init(self)
         self.sensorSystem.initSensorSystem(self)
+        Command.init(self)
         # self.neuralNetwork.init(self)
         Script.importAllScripts(self)
         self.initTimedFunctions()
