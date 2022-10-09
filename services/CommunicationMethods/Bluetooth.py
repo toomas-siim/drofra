@@ -24,6 +24,7 @@ class Bluetooth:
     def handle(self):
         try:
             self.handleIncoming()
+            self.handlePayloads()
         except BaseException as err:
             self.coreHandle.writeLog("Error handling bluetooth: " + str(err))
 
@@ -40,8 +41,9 @@ class Bluetooth:
             self.currentLine += data
 
     def handleIncoming(self):
-        client_sock,address = self.serverSock.accept()
-        self.activeClient = {"socket": client_sock, "address": address}
+        if self.serverSock != None:
+            client_sock,address = self.serverSock.accept()
+            self.activeClient = {"socket": client_sock, "address": address}
 
     def read(self):
         if self.endLine in self.currentLine:
