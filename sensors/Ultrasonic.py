@@ -15,7 +15,6 @@ class Ultrasonic(Sensor):
         self.coreHandle = coreHandle
 
     def handle(self):
-        print(self.latestDistance)
         if self.waitingForSignal == False and time.time() - self.signalStart >= 1:
             self.waitingForSignal = True
             self.signalStart = time.time()
