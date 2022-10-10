@@ -45,6 +45,7 @@ class Sensor:
             sensorData = []
             sensorType = None
             for pinData in configData:
+                print(pinData)
                 pinData = pinData.split(':')
                 if sensorType == None:
                     sensorType = pinData[2]
