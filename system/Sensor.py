@@ -40,8 +40,8 @@ class Sensor:
             self.coreHandle.writeLog("Failed to register new sensor: ", sensorType)
 
     def loadConfig(self, config):
-        for configData in config:
-            print(configData)
+        for sensorKey in config:
+            configData = config[sensorKey]
             configData = configData.split(',')
             sensorData = []
             sensorType = None
