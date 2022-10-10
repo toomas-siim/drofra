@@ -9,7 +9,10 @@ class Sensor:
     def initSensorSystem(self, coreHandle):
         self.coreHandle = coreHandle
         for sensor in Sensor.sensors:
-            sensor["handle"].init(self.coreHandle)
+            try:
+                sensor["handle"].init(self.coreHandle)
+            except:
+                self.coreHandle.writeLog("Failed starting sensor: " + sensor["sensorType"])
 
     def handle():
         for sensorData in Sensor.sensors:
