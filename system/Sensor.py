@@ -7,7 +7,6 @@ class Sensor:
         self.coreHandle = coreHandle
 
     def handle():
-        print("Total: " + str(len(Sensor.sensors)))
         for sensorData in Sensor.sensors:
             sensorData.handle.handle()
 
@@ -44,11 +43,9 @@ class Sensor:
         for configData in config:
             configData = configData.split(',')
             sensorData = []
-            sensorType = None
             for pinData in configData:
                 pinData = pinData.split(':')
-                if sensorType == None:
-                    sensorType = pinData[2]
+                sensorType = pinData[2]
                 sensorData.append({pin: pinData[0], type: pinData[1]})
             if sensorType != None:
                 self.addSensor(sensorData, sensorType)
