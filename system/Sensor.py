@@ -10,8 +10,8 @@ class Sensor:
         self.coreHandle = coreHandle
 
     def handle():
-        print(Sensor.sensors)
         for sensorData in Sensor.sensors:
+            print(sensorData.handle)
             sensorData.handle.handle()
 
     def getSensorHandleByType(self, type):
