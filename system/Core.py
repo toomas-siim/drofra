@@ -81,6 +81,8 @@ class Core:
             self.motorSystem.loadConfig(config['motors'])
         if 'servos' in config:
             self.servoSystem.loadConfig(config['servos'])
+        if 'sensors' in config:
+            self.sensorSystem.loadConfig(config['sensors'])
         if 'camera' in config:
             self.cameraSystem.loadConfig(config['camera'])
         self.altitudeSystem.loadConfig(config['general'])
