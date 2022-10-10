@@ -43,9 +43,11 @@ class Sensor:
         for configData in config:
             configData = configData.split(',')
             sensorData = []
+            sensorType = None
             for pinData in configData:
                 pinData = pinData.split(':')
-                sensorType = pinData[2]
+                if sensorType == None:
+                    sensorType = pinData[2]
                 sensorData.append({pin: pinData[0], type: pinData[1]})
             if sensorType != None:
                 self.addSensor(sensorData, sensorType)
