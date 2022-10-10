@@ -1,4 +1,5 @@
 import time
+import RPi.GPIO as GPIO
 from sensors.Sensor import Sensor
 
 class Ultrasonic(Sensor):
