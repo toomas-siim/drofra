@@ -14,6 +14,7 @@ class Gyro(Sensor):
     GYRO_ZOUT_H  = 0x47
 
     GyroPos = {"x":0,"y":0,"z":0}
+    bus = None
 
     def init(self, coreHandle):
         self.bus = smbus.SMBus(1) # @TODO
