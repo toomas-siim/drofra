@@ -49,5 +49,6 @@ class Sensor:
                 if sensorType == None:
                     sensorType = pinData[2]
                 sensorData.append({pin: pinData[0], type: pinData[1]})
+                print(sensorData)
             if sensorType != None:
                 self.addSensor(sensorData, sensorType)
