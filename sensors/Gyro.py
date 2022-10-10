@@ -49,7 +49,7 @@ class Gyro(Sensor):
         gyro_x = read_raw_data(Gyro.GYRO_XOUT_H)
         gyro_y = read_raw_data(Gyro.GYRO_YOUT_H)
         gyro_z = read_raw_data(Gyro.GYRO_ZOUT_H)
-        Gyro.GyroPos.x = gyro_x/131.0
-        Gyro.GyroPos.y = gyro_y/131.0
-        Gyro.GyroPos.z = gyro_z/131.0
+        Gyro.GyroPos["x"] = gyro_x/131.0
+        Gyro.GyroPos["y"] = gyro_y/131.0
+        Gyro.GyroPos["z"] = gyro_z/131.0
         Navigation.rotation = Gyro.GyroPos
