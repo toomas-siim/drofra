@@ -9,8 +9,8 @@ class Servo:
 
     def setValueByType(self, type, value):
         for servo in self.servos:
-            if servo.type == type:
-                self.parentHandle.pinSystem.setPinOutput(servo.pin, servo.centerPos + value)
+            if servo["type"] == type:
+                self.parentHandle.pinSystem.setPinOutput(servo["pin"], servo["centerPos"] + value)
 
     def addServo(self, pin, type, centerPos):
         self.parentHandle.pinSystem.setPinType(pin, GPIO.OUT)
