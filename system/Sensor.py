@@ -1,4 +1,5 @@
 from sensors.Ultrasonic import Ultrasonic
+from sensors.Gyro import Gyro
 
 class Sensor:
     SENSOR_TYPES = ["SENS_COMPASS", "SENS_ULTRASONIC", "SENS_GYRO", "SENS_GPS", "SENS_ATMOS", "SENS_ACCELERO"]
