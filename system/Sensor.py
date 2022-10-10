@@ -34,7 +34,7 @@ class Sensor:
             sensorHandle = Accelerometer()
 
         if sensorHandle != None:
-            sensorHandle.sensorData = {pinData: pinData, sensorType: sensorType, handle: sensorHandle}
+            sensorHandle.sensorData = {"pinData": pinData, "sensorType": sensorType, "handle": sensorHandle}
             sensorHandle.init(self.coreHandle)
             self.sensors.append(sensorHandle.sensorData)
             self.coreHandle.writeLog("Registered new sensor: ", sensorType)
