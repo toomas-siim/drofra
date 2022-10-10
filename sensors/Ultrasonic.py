@@ -3,7 +3,7 @@ from sensors.Sensor import Sensor
 
 class Ultrasonic(Sensor):
     waitingForSignal = False
-    signalStart = None
+    signalStart = 0
     latestDistance = 0
     readPin = 0
     writePin = 1
