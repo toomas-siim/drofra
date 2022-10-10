@@ -36,16 +36,13 @@ class NeuralNetwork:
             .format(self.class_names[np.argmax(score)], 100 * np.max(score))
         )
 
-
-
-    def train(self):
+    def train(self, train_ds, val_ds):
         epochs=10
         return model.fit(
           train_ds,
           validation_data=val_ds,
           epochs=epochs
         )
-
 
     def model(self):
         num_classes = len(self.class_names)
@@ -65,7 +62,6 @@ class NeuralNetwork:
         self.model.compile(optimizer='adam',
                       loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                       metrics=['accuracy'])
-
 
     def dataset(self):
         batch_size = 32
@@ -90,7 +86,6 @@ class NeuralNetwork:
 
         self.class_names = train_ds.class_names
         self.standardizeData(train_ds)
-
 
     def standardizeData(self, train_ds):
         normalization_layer = layers.Rescaling(1./255)

@@ -15,7 +15,7 @@ from services.Navigation import Navigation
 from services.Command import Command
 from system.Sensor import Sensor
 from system.Script import Script
-from system.NeuralNetwork import NeuralNetwork
+# from system.NeuralNetwork import NeuralNetwork
 
 class Core:
     flightStatus = False
@@ -44,7 +44,7 @@ class Core:
         self.altitudeSystem = Altitude()
         self.navigationSystem = Navigation()
         self.sensorSystem = Sensor()
-        self.neuralNetwork = NeuralNetwork()
+        # self.neuralNetwork = NeuralNetwork()
         self.pinSystem.init()
         self.motorSystem.init(self)
         self.servoSystem.init(self)
@@ -56,7 +56,7 @@ class Core:
         self.navigationSystem.init(self)
         self.sensorSystem.initSensorSystem(self)
         Command.init(self)
-        self.neuralNetwork.init(self)
+        # self.neuralNetwork.init(self)
         Script.importAllScripts(self)
         self.initTimedFunctions()
 
