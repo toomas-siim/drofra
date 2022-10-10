@@ -73,7 +73,7 @@ class Navigation:
                 direction += 45
         return direction
 
-    def updateSpeedData(parent):
+    def updateSpeedData(self, parent):
         speedCheckInterval = 3 # update every 3 sec
         if time.time() - self.speedTracker.lastCheck > speedCheckInterval:
             distanceTraveled = self.distanceFrom(self.speedTracker.lastPos["lat"], self.speedTracker.lastPos["lon"])
