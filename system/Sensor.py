@@ -16,7 +16,10 @@ class Sensor:
 
     def handle():
         for sensorData in Sensor.sensors:
-            sensorData["handle"].handle()
+            try:
+                sensorData["handle"].handle()
+            except:
+                self.coreHandle.writeLog("Failed handling sensor: " + sensor["sensorType"])
 
     def getSensorHandleByType(self, type):
         for sensor in self.sensors:
