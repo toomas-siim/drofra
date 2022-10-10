@@ -12,6 +12,7 @@ class Ultrasonic(Sensor):
         self.readPin = self.getPinByType("read")
 
     def handle(self):
+        print(latestDistance)
         if self.waitingForSignal == False and time.time() - self.signalStart >= 1:
             self.waitingForSignal = True
             self.signalStart = time.time()
