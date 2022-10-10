@@ -37,9 +37,8 @@ class Sensor:
             sensorHandle.sensorData = {"pinData": pinData, "sensorType": sensorType, "handle": sensorHandle}
             sensorHandle.init(self.coreHandle)
             self.sensors.append(sensorHandle.sensorData)
-            self.coreHandle.writeLog("Registered new sensor: ", sensorType)
         else:
-            self.coreHandle.writeLog("Failed to register new sensor: ", sensorType)
+            print("Failed to register new sensor: ", sensorType)
 
     def loadConfig(self, config):
         for sensorKey in config:
