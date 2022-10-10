@@ -1,5 +1,6 @@
 import smbus
 from time import sleep
+from sensors.Sensor import Sensor
 
 class Gyro(Sensor):
     PWR_MGMT_1   = 0x6B
