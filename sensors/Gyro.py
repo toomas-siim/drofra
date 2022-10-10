@@ -17,7 +17,7 @@ class Gyro(Sensor):
     bus = None
 
     def init(self, coreHandle):
-        self.bus = smbus.SMBus(1) # @TODO
+        self.bus = smbus.SMBus(0) # @TODO
         #write to sample rate register
         self.bus.write_byte_data(Device_Address, Gyro.SMPLRT_DIV, 7)
 
