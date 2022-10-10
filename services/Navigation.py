@@ -38,7 +38,7 @@ class Navigation:
         self.navigationHandle.stop()
 
     def moveToTarget(self, parent):
-        distance = self.distanceFrom(self.targetPosition.lat, self.targetPosition.lon) * 1000 # in meters
+        distance = self.distanceFrom(self.targetPosition["lat"], self.targetPosition["lon"]) * 1000 # in meters
         if distance > 1 or distance < -1:
             self.navigationHandle.moveForward()
 
@@ -52,8 +52,8 @@ class Navigation:
             self.navigationHandle.rotateRight(parent)
 
     def calculateTargetDirection(self):
-        latDifference = self.position.lat - self.targetPosition.lat
-        lonDifference = self.position.lon - self.targetPosition.lon
+        latDifference = self.position["lat"] - self.targetPosition["lat"]
+        lonDifference = self.position["lon"] - self.targetPosition["lon"]
         direction = 0
 
         if latDifference < 0:
@@ -76,7 +76,7 @@ class Navigation:
     def updateSpeedData(parent):
         speedCheckInterval = 3 # update every 3 sec
         if time.time() - self.speedTracker.lastCheck > speedCheckInterval:
-            distanceTraveled = self.distanceFrom(self.speedTracker.lastPos.lat, self.speedTracker.lastPos.lon)
+            distanceTraveled = self.distanceFrom(self.speedTracker.lastPos["lat"], self.speedTracker.lastPos["lon"])
             distancePerHour = (distanceTraveled / speedCheckInterval) * 60 * 60
             self.speed = round(distancePerHour, 2)
 
