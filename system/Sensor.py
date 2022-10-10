@@ -11,7 +11,7 @@ class Sensor:
 
     def handle():
         for sensorData in Sensor.sensors:
-            print(sensorData.handle)
+            print(sensorData)
             sensorData.handle.handle()
 
     def getSensorHandleByType(self, type):
