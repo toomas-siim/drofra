@@ -7,6 +7,7 @@ class Sensor:
         self.coreHandle = coreHandle
 
     def handle():
+        print("Total: " + str(len(Sensor.sensors)))
         for sensorData in Sensor.sensors:
             sensorData.handle.handle()
 
