@@ -15,7 +15,7 @@ from services.Navigation import Navigation
 from services.Command import Command
 from system.Sensor import Sensor
 from system.Script import Script
-# from system.NeuralNetwork import NeuralNetwork
+from system.NeuralNetwork import NeuralNetwork
 
 class Core:
     flightStatus = False
