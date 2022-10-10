@@ -41,11 +41,11 @@ class PlaneNavigation:
         # Ie moving forward needs a stable balanced speed of rotors, not jumps between high and low.
         navSystem = parent.navigationSystem
         # X Axis
-        if navSystem.rotation.x < navSystem.targetRotation.x - 5:
+        if navSystem.rotation["x"] < navSystem.targetRotation["x"] - 5:
             parent.servoSystem.setValueByType("left", -20)
             parent.servoSystem.setValueByType("right", 20)
             return True
-        elif navSystem.rotation.x > navSystem.targetRotation.x + 5:
+        elif navSystem.rotation["x"] > navSystem.targetRotation["x"] + 5:
             parent.servoSystem.setValueByType("left", 20)
             parent.servoSystem.setValueByType("right", -20)
             return True
@@ -54,11 +54,11 @@ class PlaneNavigation:
             parent.servoSystem.setValueByType("right", 0)
 
         # Y Axis
-        if navSystem.rotation.y < navSystem.targetRotation.y - 5:
+        if navSystem.rotation["y"] < navSystem.targetRotation["y"] - 5:
             parent.servoSystem.setValueByType("left", 20)
             parent.servoSystem.setValueByType("right", 20)
             return True
-        elif navSystem.rotation.y > navSystem.targetRotation.y + 5:
+        elif navSystem.rotation["y"] > navSystem.targetRotation["y"] + 5:
             parent.servoSystem.setValueByType("left", 20)
             parent.servoSystem.setValueByType("right", 20)
             return True
