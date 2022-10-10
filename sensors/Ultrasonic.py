@@ -1,4 +1,5 @@
 import time
+from sensors.Sensor import Sensor
 
 class Ultrasonic(Sensor):
     waitingForSignal = False
