@@ -15,7 +15,7 @@ class Sensor:
 
     def getSensorHandleByType(self, type):
         for sensor in self.sensors:
-            if sensor.sensorType == type:
+            if sensor["sensorType"] == type:
                 return type
         return None
 
