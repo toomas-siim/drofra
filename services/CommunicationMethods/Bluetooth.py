@@ -41,7 +41,7 @@ class Bluetooth:
             self.currentLine += data
 
     def handleIncoming(self):
-        if self.serverSock != None:
+        if self.serverSock != None and self.activeClient == None:
             client_sock,address = self.serverSock.accept()
             self.activeClient = {"socket": client_sock, "address": address}
 
