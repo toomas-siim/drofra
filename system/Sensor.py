@@ -8,6 +8,8 @@ class Sensor:
 
     def initSensorSystem(self, coreHandle):
         self.coreHandle = coreHandle
+        for sensor in Sensor.sensors:
+            sensor["handle"].init(self.coreHandle)
 
     def handle():
         for sensorData in Sensor.sensors:
@@ -36,7 +38,6 @@ class Sensor:
 
         if sensorHandle != None:
             sensorHandle.sensorData = {"pinData": pinData, "sensorType": sensorType, "handle": sensorHandle}
-            sensorHandle.init(self.coreHandle)
             self.sensors.append(sensorHandle.sensorData)
         else:
             print("Failed to register new sensor: ", sensorType)
