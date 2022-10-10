@@ -75,14 +75,14 @@ class Navigation:
 
     def updateSpeedData(self, parent):
         speedCheckInterval = 3 # update every 3 sec
-        if time.time() - self.speedTracker.lastCheck > speedCheckInterval:
+        if time.time() - self.speedTracker["lastCheck"] > speedCheckInterval:
             distanceTraveled = self.distanceFrom(self.speedTracker.lastPos["lat"], self.speedTracker.lastPos["lon"])
             distancePerHour = (distanceTraveled / speedCheckInterval) * 60 * 60
             self.speed = round(distancePerHour, 2)
 
             # Update data
-            self.speedTracker.lastCheck = time.time()
-            self.speedTracker.lastPos = self.position
+            self.speedTracker["lastCheck"] = time.time()
+            self.speedTracker.["lastPos"] = self.position
 
     def distanceFrom(self, targetLat, targetLon):
         # convert decimal degrees to radians
