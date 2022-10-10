@@ -1,12 +1,7 @@
 class Sensor(object):
     name = None
-    type = None
     coreHandle = None
     sensorData = None
-
-    def __init__(self, name, type):
-        self.type = type
-        self.name = type
 
     def init(self, coreHandle):
         self.coreHandle = coreHandle
