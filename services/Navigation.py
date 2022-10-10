@@ -1,4 +1,4 @@
-from time import time
+import time
 from math import radians, cos, sin, asin, sqrt
 
 from services.DroneType.Plane.PlaneNavigation import PlaneNavigation
