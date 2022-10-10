@@ -19,7 +19,8 @@ class Sensor:
             try:
                 sensorData["handle"].handle()
             except:
-                print("Failed handling sensor: " + sensorData["sensorType"])
+                return False
+        return True
 
     def getSensorHandleByType(self, type):
         for sensor in self.sensors:
