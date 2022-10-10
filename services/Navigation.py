@@ -82,7 +82,7 @@ class Navigation:
 
             # Update data
             self.speedTracker["lastCheck"] = time.time()
-            self.speedTracker.["lastPos"] = self.position
+            self.speedTracker["lastPos"] = self.position
 
     def distanceFrom(self, targetLat, targetLon):
         # convert decimal degrees to radians
