@@ -1,9 +1,10 @@
 class Sensor:
     SENSOR_TYPES = ["SENS_COMPASS", "SENS_ULTRASONIC", "SENS_GYRO", "SENS_GPS", "SENS_ATMOS", "SENS_ACCELERO"]
     sensors = []
+    coreHandle = None
 
     def initSensorSystem(self, coreHandle):
-        self.parentHandle = coreHandle
+        self.coreHandle = coreHandle
 
     def handle():
         for sensorData in Sensor.sensors:
@@ -31,11 +32,12 @@ class Sensor:
             sensorHandle = Accelerometer()
 
         if sensorHandle != None:
-            sensorHandle.init()
-            self.sensors.append({pinData: pinData, sensorType: sensorType, handle: sensorHandle})
-            self.parentHandle.writeLog("Registered new sensor: ", sensorType)
+            sensorHandle.sensorData = {pinData: pinData, sensorType: sensorType, handle: sensorHandle}
+            sensorHandle.init(self.coreHandle)
+            self.sensors.append(sensorHandle.sensorData)
+            self.coreHandle.writeLog("Registered new sensor: ", sensorType)
         else:
-            self.parentHandle.writeLog("Failed to register new sensor: ", sensorType)
+            self.coreHandle.writeLog("Failed to register new sensor: ", sensorType)
 
     def loadConfig(self, config):
         for configData in config:
@@ -46,6 +48,6 @@ class Sensor:
                 pinData = pinData.split(':')
                 if sensorType == None:
                     sensorType = pinData[2]
-                sensorData.append({pin: pinData[0], pinType: pinData[1]})
+                sensorData.append({pin: pinData[0], type: pinData[1]})
             if sensorType != None:
                 self.addSensor(sensorData, sensorType)
