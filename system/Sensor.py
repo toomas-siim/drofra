@@ -41,11 +41,11 @@ class Sensor:
 
     def loadConfig(self, config):
         for configData in config:
+            print(configData)
             configData = configData.split(',')
             sensorData = []
             sensorType = None
             for pinData in configData:
-                print(pinData)
                 pinData = pinData.split(':')
                 if sensorType == None:
                     sensorType = pinData[2]
