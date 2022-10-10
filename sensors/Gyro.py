@@ -17,24 +17,24 @@ class Gyro(Sensor):
 
     def init(self, coreHandle):
         #write to sample rate register
-        smbus.bus.write_byte_data(Device_Address, Gyro.SMPLRT_DIV, 7)
+        smsmbus.bus.smbus.bus.write_byte_data(Device_Address, Gyro.SMPLRT_DIV, 7)
 
         #Write to power management register
-        smbus.bus.write_byte_data(Device_Address, Gyro.PWR_MGMT_1, 1)
+        smsmbus.bus.smbus.bus.write_byte_data(Device_Address, Gyro.PWR_MGMT_1, 1)
 
         #Write to Configuration register
-        smbus.bus.write_byte_data(Device_Address, Gyro.CONFIG, 0)
+        smsmbus.bus.smbus.bus.write_byte_data(Device_Address, Gyro.CONFIG, 0)
 
         #Write to Gyro configuration register
-        smbus.bus.write_byte_data(Device_Address, Gyro.GYRO_CONFIG, 24)
+        smsmbus.bus.smbus.bus.write_byte_data(Device_Address, Gyro.GYRO_CONFIG, 24)
 
         #Write to interrupt enable register
-        smbus.bus.write_byte_data(Device_Address, Gyro.INT_ENABLE, 1)
+        smsmbus.bus.smbus.bus.write_byte_data(Device_Address, Gyro.INT_ENABLE, 1)
 
     def read_raw_data(addr):
     	#Accelero and Gyro value are 16-bit
-        high = smbus.bus.read_byte_data(Device_Address, addr)
-        low = smbus.bus.read_byte_data(Device_Address, addr+1)
+        high = smsmbus.bus.smbus.bus.read_byte_data(Device_Address, addr)
+        low = smsmbus.bus.smbus.bus.read_byte_data(Device_Address, addr+1)
 
         #concatenate higher and lower value
         value = ((high << 8) | low)
