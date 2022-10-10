@@ -2,6 +2,8 @@ from services.Event import Event
 
 
 class Circle:
+    name = "Circle"
+
     coreHandle = None
     circlePoint = None
     rotationPoints = []
