@@ -18,7 +18,7 @@ from system.Script import Script
 # from system.NeuralNetwork import NeuralNetwork
 
 class Core:
-    flightStatus = False
+    flightStatus = True
     droneType = None
     shutdown = False
 
