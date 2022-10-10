@@ -20,7 +20,7 @@ class Sensor:
         sensorHandle = None
         if sensorType == "SENS_COMPASS":
             sensorHandle = Compass()
-        elif sensorTyoe == "SENS_ULTRASONIC":
+        elif sensorType == "SENS_ULTRASONIC":
             sensorHandle = Ultrasonic()
         elif sensorType == "SENS_GYRO":
             sensorHandle = Gyro()
