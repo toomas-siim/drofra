@@ -28,7 +28,7 @@ class Script:
                     if Sensor.getSensorHandleByPurpose(requirement["requirement"]["purpose"]) == None:
                         coreHandle.shutdown = True
                         coreHandle.writeLog("Failed loading script: " + scriptName)
-                        coreHandle.writeLog("--> Missing requirement: " + requirement["requirement"]["purpose"])
+                        coreHandle.writeLog("--> Missing requirement: " + requirement["requirement"]["purpose"] + " sensor.")
                         return False
 
     def getScriptsFromFolder(folder):
