@@ -22,7 +22,7 @@ class Script:
             Script.loadScript(script, coreHandle)
 
     def processRequirements(scriptName, requirements, coreHandle):
-        errorsFound = False
+        failedSensorsFound = False
         for requirement in requirements:
             if requirement["system"] == "sensor":
                 if requirement["required"] == True:
@@ -30,8 +30,8 @@ class Script:
                         coreHandle.shutdown = True
                         coreHandle.writeLog("Failed loading script: " + scriptName)
                         coreHandle.writeLog("---> Missing requirement: " + requirement["requirement"]["purpose"] + " sensor.")
-                        errorsFound = True
-        if errorsFound == True:
+                        failedSensorsFound = True
+        if failedSensorsFound == True:
             coreHandle.writeLog("------> Please check drone.ini file and make sure all necessary sensors are properly configured.")
 
     def getScriptsFromFolder(folder):
