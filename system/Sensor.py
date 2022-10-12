@@ -28,7 +28,13 @@ class Sensor:
                 return type
         return None
 
-    def addSensor(self, pinData, sensorType):
+    def getSensorHandleByPurpose(self, purpose):
+            for sensor in self.sensors:
+                if sensor["sensorPurpose"] == purpose:
+                    return purpose
+            return None
+
+    def addSensor(self, pinData, sensorType, purpose):
         sensorHandle = None
         if sensorType == "SENS_COMPASS":
             sensorHandle = Compass()
@@ -44,7 +50,7 @@ class Sensor:
             sensorHandle = Accelerometer()
 
         if sensorHandle != None:
-            sensorHandle.sensorData = {"pinData": pinData, "sensorType": sensorType, "handle": sensorHandle}
+            sensorHandle.sensorData = {"pinData": pinData, "sensorType": sensorType, "sensorPurpose": purpose, "handle": sensorHandle}
             self.sensors.append(sensorHandle.sensorData)
         else:
             print("Failed to register new sensor: ", sensorType)
@@ -55,10 +61,12 @@ class Sensor:
             configData = configData.split(',')
             sensorData = []
             sensorType = None
+            purpose = None
             for pinData in configData:
                 pinData = pinData.split(':')
                 if sensorType == None:
                     sensorType = pinData[2]
+                    purpose = pinData[3]
                 sensorData.append({"pin": pinData[0], "type": pinData[1]})
             if sensorType != None:
-                self.addSensor(sensorData, sensorType)
+                self.addSensor(sensorData, sensorType, purpose)
