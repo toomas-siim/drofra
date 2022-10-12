@@ -22,14 +22,17 @@ class Script:
             Script.loadScript(script, coreHandle)
 
     def processRequirements(scriptName, requirements, coreHandle):
+        errorsFound = False
         for requirement in requirements:
             if requirement["system"] == "sensor":
                 if requirement["required"] == True:
                     if Sensor.getSensorHandleByPurpose(requirement["requirement"]["purpose"]) == None:
                         coreHandle.shutdown = True
                         coreHandle.writeLog("Failed loading script: " + scriptName)
-                        coreHandle.writeLog("--> Missing requirement: " + requirement["requirement"]["purpose"] + " sensor.")
-                        return False
+                        coreHandle.writeLog("---> Missing requirement: " + requirement["requirement"]["purpose"] + " sensor.")
+                        errorsFound = True
+        if errorsFound == True:
+            coreHandle.writeLog("------> Please check drone.ini file and make sure all necessary sensors are properly configured.")
 
     def getScriptsFromFolder(folder):
         return [f for f in listdir(folder) if isfile(join(folder, f))]
