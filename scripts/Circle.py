@@ -9,6 +9,13 @@ class Circle:
     rotationPoints = []
     currentPoint = 0
 
+    REQUIREMENTS = [
+        { "system": "sensor", "requirement": { "purpose": "altitude" }, "required": True },
+        { "system": "sensor", "requirement": { "purpose": "rotation" }, "required": True },
+        { "system": "sensor", "requirement": { "purpose": "direction" }, "required": True },
+        { "system": "sensor", "requirement": { "purpose": "position" }, "required": True },
+    ]
+
     def init(self, coreHandle):
         self.coreHandle = coreHandle
         coreHandle.writeLog("Circle script initiated.")
