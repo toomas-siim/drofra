@@ -29,10 +29,10 @@ class Sensor:
         return None
 
     def getSensorHandleByPurpose(self, purpose):
-            for sensor in self.sensors:
-                if sensor["sensorPurpose"] == purpose:
-                    return purpose
-            return None
+        for sensor in self.sensors:
+            if sensor["sensorPurpose"] == purpose:
+                return purpose
+        return None
 
     def addSensor(self, pinData, sensorType, purpose):
         sensorHandle = None
