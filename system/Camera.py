@@ -28,6 +28,9 @@ class Camera:
     def close(self):
         self.handle.stop_preview()
 
+    def handleServoPositions(self):
+        # @TODO: For object tracking.
+
     def loadConfig(self, config):
         if 'camera-servo-x-pin' in config:
             self.cameraServoX = config['camera-servo-x-pin']
